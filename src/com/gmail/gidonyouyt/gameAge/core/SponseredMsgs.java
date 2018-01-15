@@ -1,0 +1,16 @@
+package com.gmail.gidonyouyt.gameAge.core;
+
+import java.util.ArrayList;
+
+public class SponseredMsgs {
+	
+	private static ArrayList<String> msgPool = new ArrayList<>();
+	private static int setupLv = 1;
+//	0 - none;	1 - on;		2 - on/with server sponsered
+	
+	private static void setSponseredMessages() {
+		
+		
+	}
+
+}
