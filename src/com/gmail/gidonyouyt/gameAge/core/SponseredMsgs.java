@@ -6,7 +6,7 @@ public class SponseredMsgs {
 	
 	private static ArrayList<String> msgPool = new ArrayList<>();
 	private static int setupLv = 1;
-//	0 - none;	1 - on;		2 - on/with server sponsered
+//	0 - none;	1 - on;		2 - on/with server sponsored
 	
 	private static void setSponseredMessages() {
 		
