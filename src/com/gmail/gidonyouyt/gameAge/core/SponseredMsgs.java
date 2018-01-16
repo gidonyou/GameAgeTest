@@ -9,6 +9,12 @@ public class SponseredMsgs {
 //	0 - none;	1 - on;		2 - on/with server sponsored
 	
 	private static void setSponseredMessages() {
+		switch (setupLv) {
+		case(0):
+			break;
+		case(2):
+			break;
+		}
 		
 		
 	}
