@@ -11,7 +11,9 @@ public class SponseredMsgs {
 	private static void setSponseredMessages() {
 		switch (setupLv) {
 		case(0):
-			break;
+			return;
+		case(1):
+			msgPool.add("");
 		case(2):
 			break;
 		}
