@@ -14,6 +14,10 @@ public class CPlayCompleter implements TabCompleter {
 		// TODO Auto-generated method stub
 		if (arg3.length == 2) {
 			if (arg3[0].equalsIgnoreCase("u")) {
+				if (!arg0.isOp()) {
+					return null;
+				}
+				
 				ArrayList<String> list = new ArrayList<String>();
 				if (!arg3[1].equals("")) {
 					for (GameSettings settings : GameSettings.values()) {
