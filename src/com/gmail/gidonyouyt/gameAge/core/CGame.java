@@ -17,6 +17,11 @@ public class CGame implements CommandExecutor {
 
 		if (arg3.length == 0)
 			return false;
+		
+		if (!sender.isOp()) {
+			sender.sendMessage(ChatColor.DARK_RED + "OP 만 이용이 가능한 커멘드입니다.");
+			return true;
+		}
 
 		String subCommand = arg3[0];
 
