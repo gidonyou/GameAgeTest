@@ -17,7 +17,7 @@
 다만 그렇게 하실 경우 저에게 Pull Request 등으로 알려주시면 최대한 반영을 하겠습니다.
 
 ## 위키 ##
-본 플러그인를 사용하시기 조금이라도 편하게 위키를 만들어 두었습니다.
+본 플러그인를 사용하시기 조금이라도 편하게 [위키]를 만들어 두었습니다.
 
 위키 확인하러 가기: https://github.com/gidonyou/MCPlugin_GameAge/wiki
 
@@ -40,8 +40,9 @@
 > 유튜브: https://www.youtube.com/gidonyou
 
 ## 도움을 주신 분들 ##
+베타 테스터 (Beta Tester): NF3charcoaL, J\_arvi\_S, TF2\_ValS
+문법 수정 도움: NF3charcoaL
 
-\[아직 없음]
 
 
 [기돈유 YT]: https://www.youtube.com/gidonyou
