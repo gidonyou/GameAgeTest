@@ -40,7 +40,7 @@
 > 유튜브: https://www.youtube.com/gidonyou
 
 ## 도움을 주신 분들 ##
-베타 테스터 (Beta Tester): NF3charcoaL, J\_arvi\_S, TF2\_ValS
+베타 테스터 (Beta Tester): NF3charcoaL, J\_arvi\_S, TF2\_ValS  
 문법 수정 도움: NF3charcoaL
 
 
