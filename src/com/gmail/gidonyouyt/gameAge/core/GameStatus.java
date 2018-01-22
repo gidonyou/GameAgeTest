@@ -4,8 +4,14 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 
 public enum GameStatus {
-	STANDBY(ChatColor.YELLOW), ENGINE_SETUP(ChatColor.GOLD), GAME_SETUP(ChatColor.GOLD), RUNNING(
-			ChatColor.GREEN), FINSHED(ChatColor.AQUA), STOPPED(ChatColor.RED), BREAK_PRD(ChatColor.LIGHT_PURPLE);
+	STANDBY(ChatColor.YELLOW),
+	ENGINE_SETUP(ChatColor.GOLD),
+	GAME_SETUP(ChatColor.GOLD),
+	COUNT_DOWN(ChatColor.BLUE),
+	RUNNING(ChatColor.GREEN),
+	FINSHED(ChatColor.AQUA),
+	STOPPED(ChatColor.RED),
+	BREAK_PRD(ChatColor.LIGHT_PURPLE);
 
 	// https://www.mkyong.com/java/java-enum-example/
 
@@ -22,7 +28,8 @@ public enum GameStatus {
 	private static GameStatus currentStatus = GameStatus.STANDBY;
 
 	public static void setStatus(GameStatus newStatus) {
-		SendMessage.sendMessageOP(ChatColor.GRAY + "게임상태가 변경되었습니다. %old% --> %new%".replace("%old%", currentStatus.toString()).replace("%new%", newStatus.toString()));
+		SendMessage.sendMessageOP(ChatColor.GRAY + "게임상태가 변경되었습니다. %old% --> %new%"
+				.replace("%old%", currentStatus.toString()).replace("%new%", newStatus.toString()));
 		currentStatus = newStatus;
 	}
 
