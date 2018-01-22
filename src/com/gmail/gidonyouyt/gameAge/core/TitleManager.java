@@ -22,7 +22,7 @@ public class TitleManager {
 		}
 		titlePacket = new PacketPlayOutTitle(EnumTitleAction.TITLE, ChatSerializer
 				.a("{\"text\":\"%s\",\"color\":\"%c\",\"bold\":true}".replace("%s", title).replace("%c", titleColor)),
-				20, 40, 30);
+				10, 40, 30);
 
 		PacketPlayOutTitle subTitlePacket = null;
 		if (subtitle == null) {
@@ -32,7 +32,7 @@ public class TitleManager {
 		subTitlePacket = new PacketPlayOutTitle(EnumTitleAction.SUBTITLE,
 				ChatSerializer.a("{\"text\":\"%s\",\"color\":\"%c\",\"bold\":true}".replace("%s", subtitle)
 						.replace("%c", subtitleColor)),
-				20, 40, 30);
+				10, 40, 30);
 
 		PlayerConnection connection = ((CraftPlayer) player).getHandle().playerConnection;
 
