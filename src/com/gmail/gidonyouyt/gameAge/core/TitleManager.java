@@ -16,17 +16,23 @@ public class TitleManager {
 			String subtitleColor) {
 
 		PacketPlayOutTitle titlePacket = null;
-		if (title != null)
-			titlePacket = new PacketPlayOutTitle(EnumTitleAction.TITLE, ChatSerializer.a(
-					"{\"text\":\"%s\",\"color\":\"%c\",\"bold\":true}".replace("%s", title).replace("%c", titleColor)),
-					20, 40, 30);
+		if (title == null) {
+			title = "";
+			titleColor = "";
+		}
+		titlePacket = new PacketPlayOutTitle(EnumTitleAction.TITLE, ChatSerializer
+				.a("{\"text\":\"%s\",\"color\":\"%c\",\"bold\":true}".replace("%s", title).replace("%c", titleColor)),
+				20, 40, 30);
 
 		PacketPlayOutTitle subTitlePacket = null;
-		if (subtitle != null)
-			subTitlePacket = new PacketPlayOutTitle(EnumTitleAction.SUBTITLE,
-					ChatSerializer.a("{\"text\":\"%s\",\"color\":\"%c\",\"bold\":true}".replace("%s", subtitle)
-							.replace("%c", subtitleColor)),
-					20, 40, 30);
+		if (subtitle == null) {
+			subtitle = "";
+			subtitleColor = "";
+		}
+		subTitlePacket = new PacketPlayOutTitle(EnumTitleAction.SUBTITLE,
+				ChatSerializer.a("{\"text\":\"%s\",\"color\":\"%c\",\"bold\":true}".replace("%s", subtitle)
+						.replace("%c", subtitleColor)),
+				20, 40, 30);
 
 		PlayerConnection connection = ((CraftPlayer) player).getHandle().playerConnection;
 
