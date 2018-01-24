@@ -1,4 +1,4 @@
-﻿package com.gmail.gidonyouyt.gameAge;
+package com.gmail.gidonyouyt.gameAge;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -31,10 +31,10 @@ public class GameBorder {
 		wb.setWarningTime(0);
 		wb.setDamageBuffer(0);
 		Location l = wb.getCenter();
-		SendMessage.broadcastMessage(ChatColor.DARK_RED + "[ê²½ê³ ] " + ChatColor.RED + "ê²½ê¸° êµ¬ì—­ì´ ì œí•œë˜ì—ˆìŠµë‹ˆë‹¤.");
-		SendMessage.broadcastMessage(ChatColor.DARK_RED + "[ê²½ê³ ] " + ChatColor.RED
-				+ "êµ¬ì—­ ì¤‘ì‹¬: (%x, %y)".replace("%x", String.valueOf(l.getX())).replace("%y", String.valueOf(l.getZ())));
-		SendMessage.broadcastMessage(ChatColor.DARK_RED + "[ê²½ê³ ] " + ChatColor.RED + "êµ¬ì—­ í¬ê¸°: " + wb.getSize());
+		SendMessage.broadcastMessage(ChatColor.DARK_RED + "[경고] " + ChatColor.RED + "경기 구역이 제한되었습니다.");
+		SendMessage.broadcastMessage(ChatColor.DARK_RED + "[경고] " + ChatColor.RED
+				+ "구역 중심: (%x, %y)".replace("%x", String.valueOf(l.getX())).replace("%y", String.valueOf(l.getZ())));
+		SendMessage.broadcastMessage(ChatColor.DARK_RED + "[경고] " + ChatColor.RED + "구역 크기: " + wb.getSize());
 
 		GameBorder.newSize = size;
 		isDefaultB = true;
@@ -43,7 +43,7 @@ public class GameBorder {
 	public static void setBorder(double size, double minute, Location center) {
 		// minute = 0;
 		if (!isDefaultB) {
-			SendMessage.sendMessageOP("ê¸°ë³¸ ë² ë¦¬ì–´ë¥¼ ì„¤ì •í•˜ëŠ”ì¤‘ ì´ˆê¸° ì„¤ì •ì´ ì•ˆë˜ìžˆì–´ì„œ ì‹¤íŒ¨.");
+			SendMessage.sendMessageOP("기본 베리어를 설정하는중 초기 설정이 안되있어서 실패.");
 			return;
 		}
 		if (center == null)
@@ -58,14 +58,14 @@ public class GameBorder {
 		wb.setCenter(center);
 		wb.setSize(size, time);
 		Location l = wb.getCenter();
-		SendMessage.broadcastMessage(ChatColor.DARK_RED + "[ê²½ê³ ] " + ChatColor.RED
-				+ "%tê°„ ê²½ê¸° êµ¬ì—­ì´ ì œí•œë˜ì—ˆìŠµë‹ˆë‹¤.".replace("%t", ChatColor.GOLD + String.valueOf(minute) + "ë¶„" + ChatColor.RED));
-		SendMessage.broadcastMessage(ChatColor.DARK_RED + "[ê²½ê³ ] " + ChatColor.RED
-				+ "êµ¬ì—­ ì¤‘ì‹¬: (%x, %y)".replace("%x", String.valueOf(l.getX())).replace("%y", String.valueOf(l.getZ())));
+		SendMessage.broadcastMessage(ChatColor.DARK_RED + "[경고] " + ChatColor.RED
+				+ "%t간 경기 구역이 제한되었습니다.".replace("%t", ChatColor.GOLD + String.valueOf(minute) + "분" + ChatColor.RED));
+		SendMessage.broadcastMessage(ChatColor.DARK_RED + "[경고] " + ChatColor.RED
+				+ "구역 중심: (%x, %y)".replace("%x", String.valueOf(l.getX())).replace("%y", String.valueOf(l.getZ())));
 		SendMessage
 				.broadcastMessage(
 						ChatColor.DARK_RED
-								+ "[ê²½ê³ ] %o  -->  %n"
+								+ "[경고] %o  -->  %n"
 										.replace("%o",
 												ChatColor.RED + String.valueOf(Math.floor(wb.getSize()))
 														+ ChatColor.RESET)
@@ -76,7 +76,7 @@ public class GameBorder {
 
 	public static void clearBorder() {
 		wb.reset();
-		SendMessage.broadcastMessage(ChatColor.DARK_RED + "[ê²½ê³ ] " + ChatColor.GREEN + "ê²½ê¸° êµ¬ì—­ì´ ì´ˆê¸°í™” ë˜ì—ˆìŠµë‹ˆë‹¤.");
+		SendMessage.broadcastMessage(ChatColor.DARK_RED + "[경고] " + ChatColor.GREEN + "경기 구역이 초기화 되었습니다.");
 		autoTimes = 0;
 		GameBorder.newSize = wb.getSize();
 		isDefaultB = false;
@@ -85,7 +85,7 @@ public class GameBorder {
 
 	public static void autoLimit() {
 		if (!isDefaultB) {
-			SendMessage.sendMessageOP("ì˜¤í† ë² ë¦¬ì–´ë¥¼ ì„¤ì •í•˜ëŠ”ì¤‘ ê¸°ë³¸ ë² ë¦¬ì–´ê°€ ì—†ì–´ì„œ ì‹¤íŒ¨í•˜ì˜€ìŠµë‹ˆë‹¤.");
+			SendMessage.sendMessageOP("오토베리어를 설정하는중 기본 베리어가 없어서 실패하였습니다.");
 			return;
 		}
 
@@ -117,10 +117,10 @@ public class GameBorder {
 
 	private static void forceDamage() {
 		double limit = GameSettings.FORCE_DAMAGE_DISTANCE.value();
-		SendMessage.broadcastMessage(ChatColor.DARK_RED + "[ê²½ê³ ] " + ChatColor.RED + "ê²½ê¸° êµ¬ì—­ì´ %s ë¸”ëŸ­ ì•„ëž˜ ì´ë¯€ë¡œ ëª¨ë“  í”Œë ˆì´ì–´ì—ê²Œ ë°ë¯¸ì§€."
+		SendMessage.broadcastMessage(ChatColor.DARK_RED + "[경고] " + ChatColor.RED + "경기 구역이 %s 블럭 아래 이므로 모든 플레이어에게 데미지."
 				.replace("%s", ChatColor.GOLD + String.valueOf(limit) + ChatColor.RED));
 		SendMessage
-				.broadcastMessage(ChatColor.DARK_RED + "[ê²½ê³ ] " + ChatColor.RED + "%s ì´ˆ í›„ì— ëª¨ë“  í”Œë ˆì´ì–´ ì—ê²Œ ë°ë¯¸ì§€".replace("%s",
+				.broadcastMessage(ChatColor.DARK_RED + "[경고] " + ChatColor.RED + "%s 초 후에 모든 플레이어 에게 데미지".replace("%s",
 						ChatColor.GOLD + String.valueOf(GameSettings.FORCE_DAMAGE_TIME.value()) + ChatColor.RED));
 		forceDamage = true;
 	}
@@ -148,7 +148,7 @@ public class GameBorder {
 		}else {
 			forceCoolTime--;
 			if (forceCoolTime <= 10) {
-				SendMessage.broadcastMessage(ChatColor.DARK_RED + "[ê²½ê³ ] " + ChatColor.RED + "%s ì´ˆ ì´í›„ì— ëª¨ë“  í”Œë ˆì´ì–´ì—ê²Œ ë°ë¯¸ì§€"
+				SendMessage.broadcastMessage(ChatColor.DARK_RED + "[경고] " + ChatColor.RED + "%s 초 이후에 모든 플레이어에게 데미지"
 						.replace("%s", ChatColor.GOLD + String.valueOf(forceCoolTime) + ChatColor.RED));
 				for (Player p : Bukkit.getOnlinePlayers())
 					p.playSound(p.getLocation(), Sound.ITEM_FIRECHARGE_USE, 10, 1);

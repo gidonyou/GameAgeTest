@@ -1,4 +1,4 @@
-﻿package com.gmail.gidonyouyt.gameAge.core;
+package com.gmail.gidonyouyt.gameAge.core;
 
 import java.util.ArrayList;
 
@@ -21,18 +21,18 @@ public class SponseredMsgs {
 		case (0):
 			return;
 		case (1):
-			msgPool.add("ì´ ì»¨í…ì¸ ëŠ” ê¸°ëˆìœ  YTì—ì„œ ë§Œë“¤ì–´ ì§„ê²ƒìž…ë‹ˆë‹¤.");
-			msgPool.add("ê°œë°œìž: ê¸°ëˆìœ  (ìœ íŠœë¸Œì—ì„œ ê¸°ëˆìœ  ê²€ìƒ‰)");
+			msgPool.add("이 컨텐츠는 기돈유 YT에서 만들어 진것입니다.");
+			msgPool.add("개발자: 기돈유 (유튜브에서 기돈유 검색)");
 			break;
 		case (2):
-			msgPool.add("ì´ ì»¨í…ì¸ ëŠ” ê¸°ëˆìœ  YTì—ì„œ ë§Œë“¤ì–´ ì§„ê²ƒìž…ë‹ˆë‹¤.");
-			msgPool.add("ê°œë°œìž: ê¸°ëˆìœ  (ìœ íŠœë¸Œì—ì„œ ê¸°ëˆìœ  ê²€ìƒ‰)");
+			msgPool.add("이 컨텐츠는 기돈유 YT에서 만들어 진것입니다.");
+			msgPool.add("개발자: 기돈유 (유튜브에서 기돈유 검색)");
 
-			msgPool.add("ë³¸ ì„œë²„ëŠ” ê¸°ëˆìœ  YT ì—ì„œ í˜¸ìŠ¤íŒ… ì¤‘ìž…ë‹ˆë‹¤.");
-			msgPool.add("ê¸°ëˆìœ  YTì—ì„œ ìž¬ë¯¸ìžˆëŠ” ì»¨í…ì¸  ì‹œì²­í•˜ì‹œë ¤ë©´ ìœ íŠœë¸Œì—ì„œ 'ê¸°ëˆìœ ' ê²€ìƒ‰í•´ë³´ì„¸ìš”");
-			msgPool.add("ê¿€ìž¼ì»¨í…ì¸ ì˜ ì‹œìž‘ì€ ê¸°ëˆìœ  TV ì—ì„œ");
-			msgPool.add("ì´ëŸ° ìž¬ë¯¸ìžˆëŠ” í”ŒëŸ¬ê·¸ì¸ì„ ë³´ì‹œë ¤ë©´ ìœ íŠœë¸Œì—ì„œ 'ê¸°ëˆìœ  ê²€ìƒ‰'");
-			msgPool.add("ìœ íŠœë¸Œì—ì„œ 'ê¸°ëˆìœ 'ë¥¼ ê²€ìƒ‰í•˜ì‹œë©´ ìž¬ë¯¸ìžˆëŠ” ì»¨í…ì¸ ë¥¼ ì‹œì²­í•˜ì‹¤ìˆ˜ ìžˆìŠµë‹ˆë‹¤.");
+			msgPool.add("본 서버는 기돈유 YT 에서 호스팅 중입니다.");
+			msgPool.add("기돈유 YT에서 재미있는 컨텐츠 시청하시려면 유튜브에서 '기돈유' 검색해보세요");
+			msgPool.add("꿀잼컨텐츠의 시작은 기돈유 TV 에서");
+			msgPool.add("이런 재미있는 플러그인을 보시려면 유튜브에서 '기돈유 검색'");
+			msgPool.add("유튜브에서 '기돈유'를 검색하시면 재미있는 컨텐츠를 시청하실수 있습니다.");
 			break;
 		}
 
@@ -54,8 +54,8 @@ public class SponseredMsgs {
 		int random = getRandomValue(0, msgPool.size() - 1);
 		String msg = msgPool.get(random);
 
-		Bukkit.broadcastMessage(ChatColor.YELLOW + "[ê°œë°œì§„] " + ChatColor.RESET
-				+ msg.replace("ê¸°ëˆìœ ", ChatColor.LIGHT_PURPLE + "ê¸°ëˆìœ " + ChatColor.RESET));
+		Bukkit.broadcastMessage(ChatColor.YELLOW + "[개발진] " + ChatColor.RESET
+				+ msg.replace("기돈유", ChatColor.LIGHT_PURPLE + "기돈유" + ChatColor.RESET));
 
 	}
 

@@ -1,4 +1,4 @@
-﻿package com.gmail.gidonyouyt.gameAge;
+package com.gmail.gidonyouyt.gameAge;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,21 +43,21 @@ public class Sequence {
 	private static HashSet<Player> playerPlaying = new HashSet<Player>();
 
 	public static void start() {
-		SendMessage.broadcastMessage(ChatColor.BLUE + "ì‹œí€€ìŠ¤ - ê²Œìž„ì´ ì‹œìž‘ë©ë‹ˆë‹¤!");
+		SendMessage.broadcastMessage(ChatColor.BLUE + "시퀀스 - 게임이 시작됩니다!");
 		cleanup();
 		setup();
 
 	}
 
 	public static void stop() {
-		SendMessage.broadcastMessage(ChatColor.RED + "ì‹œí€€ìŠ¤ - ê²Œìž„ì´ ì¤‘ì§€ë©ë‹ˆë‹¤!");
+		SendMessage.broadcastMessage(ChatColor.RED + "시퀀스 - 게임이 중지됩니다!");
 		GameStatus.setStatus(GameStatus.STOPPED);
 		cleanup();
 
 	}
 
 	public static void setup() {
-		SendMessage.sendMessageOP(ChatColor.GRAY + "ì‹œí€€ìŠ¤ - ì…‹ì—… ì§„í–‰ì¤‘");
+		SendMessage.sendMessageOP(ChatColor.GRAY + "시퀀스 - 셋업 진행중");
 		GameStatus.setStatus(GameStatus.ENGINE_SETUP);
 
 		GameBorder.setborder();
@@ -106,7 +106,7 @@ public class Sequence {
 			playerPlaying.add(null);
 		}
 
-		SendMessage.broadcastMessage(ChatColor.GREEN + "ê²Œìž„ ì¤€ë¹„ ì™„ë£Œ -- ì‹œìž‘!");
+		SendMessage.broadcastMessage(ChatColor.GREEN + "게임 준비 완료 -- 시작!");
 		GameSettings.gameInfo();
 
 		countDown = (int) GameSettings.COUNTDOWN_TIME.value();
@@ -146,21 +146,21 @@ public class Sequence {
 
 		if (playerPlaying.size() <= 1) {
 			if (playerPlaying.isEmpty()) {
-				SendMessage.broadcastMessage(ChatColor.RED + "ëˆ„ê°€ ì´ê²¼ëŠ”ì§€ ì‹ë³„ ë¶ˆê°€ëŠ¥");
+				SendMessage.broadcastMessage(ChatColor.RED + "누가 이겼는지 식별 불가능");
 			} else {
 				Player winner = (Player) playerPlaying.toArray()[0];
 				if (winner == null) {
-					SendMessage.broadcastMessage(ChatColor.RED + "ì•Œìˆ˜ì—†ëŠ” ì´ìš©ìž ìš°ìŠ¹");
-					TitleManager.displayTitle("ì•Œìˆ˜ì—†ëŠ” ì´ìš©ìž ìš°ìŠ¹", "gold", "ì´ê±´ ì˜¤ë¥˜ì•¼", "red");
+					SendMessage.broadcastMessage(ChatColor.RED + "알수없는 이용자 우승");
+					TitleManager.displayTitle("알수없는 이용자 우승", "gold", "이건 오류야", "red");
 				} else {
 					SendMessage
-							.broadcastMessage(ChatColor.BLUE + winner.getName() + ChatColor.RESET + " ë‹˜ ìš°ìŠ¹!!! ì¶•í•˜í•©ë‹ˆë‹¤!");
-					TitleManager.displayTitle(ChatColor.BLUE + winner.getName() + ChatColor.RESET + " ë‹˜ ìš°ìŠ¹", "gold",
-							"ë‚¨ì€ì‹œê°„: " + toMinute(playerRemaingTime.get(winner)), "gray");
+							.broadcastMessage(ChatColor.BLUE + winner.getName() + ChatColor.RESET + " 님 우승!!! 축하합니다!");
+					TitleManager.displayTitle(ChatColor.BLUE + winner.getName() + ChatColor.RESET + " 님 우승", "gold",
+							"남은시간: " + toMinute(playerRemaingTime.get(winner)), "gray");
 				}
 			}
 			GameStatus.setStatus(GameStatus.FINSHED);
-			SendMessage.broadcastMessage(ChatColor.GREEN + "ê²Œìž„ ë");
+			SendMessage.broadcastMessage(ChatColor.GREEN + "게임 끝");
 			return;
 		}
 
@@ -185,19 +185,19 @@ public class Sequence {
 			obj.setDisplayName(player.getName());
 
 			obj.getScore("").setScore(9);
-			obj.getScore(ChatColor.GREEN + ChatColor.BOLD.toString() + "ëž­í¬").setScore(8);
+			obj.getScore(ChatColor.GREEN + ChatColor.BOLD.toString() + "랭크").setScore(8);
 			obj.getScore(getRank(player) + "/" + playerPlaying.size()).setScore(7);
 			obj.getScore(" ").setScore(6);
-			obj.getScore(ChatColor.RED + ChatColor.BOLD.toString() + "ë‚¨ì€ì‹œê°„").setScore(5);
+			obj.getScore(ChatColor.RED + ChatColor.BOLD.toString() + "남은시간").setScore(5);
 			obj.getScore(toMinute(lifeTime) + " ").setScore(4);
 			obj.getScore("  ").setScore(3);
-			obj.getScore(ChatColor.LIGHT_PURPLE + ChatColor.BOLD.toString() + "ê²Œìž„ì‹œê°„").setScore(2);
+			obj.getScore(ChatColor.LIGHT_PURPLE + ChatColor.BOLD.toString() + "게임시간").setScore(2);
 			obj.getScore(toMinute(gameTime)).setScore(1);
 			obj.getScore("   ").setScore(0);
 			if (GameBorder.isInside(player))
-				obj.getScore(ChatColor.GREEN + "ê²½ê¸°êµ¬ì—­ âœ“").setScore(-1);
+				obj.getScore(ChatColor.GREEN + "경기구역 ✓").setScore(-1);
 			else
-				obj.getScore(ChatColor.RED + "ê²½ê¸°êµ¬ì—­ âœ˜").setScore(-1);
+				obj.getScore(ChatColor.RED + "경기구역 ✘").setScore(-1);
 
 			player.setScoreboard(board);
 
@@ -254,8 +254,8 @@ public class Sequence {
 		}
 		player.getInventory().clear();
 
-		TitleManager.displayTitle(null, null, player.getName() + "ë‹˜ ì•„ì›ƒ", "red");
-		SendMessage.broadcastMessage(ChatColor.RED + player.getName() + ChatColor.RESET + "ë‹˜ ì•„ì›ƒ");
+		TitleManager.displayTitle(null, null, player.getName() + "님 아웃", "red");
+		SendMessage.broadcastMessage(ChatColor.RED + player.getName() + ChatColor.RESET + "님 아웃");
 		playerPlaying.remove(player);
 		player.setGameMode(GameMode.SPECTATOR);
 
@@ -282,7 +282,7 @@ public class Sequence {
 		int seconds = remainder % 60;
 		String mins = (minutes < 10 ? "0" : "") + minutes;
 		String secs = (seconds < 10 ? "0" : "") + seconds;
-		String formattedTime = mins + "ë¶„ " + secs + "ì´ˆ";
+		String formattedTime = mins + "분 " + secs + "초";
 		return formattedTime;
 	}
 
@@ -297,8 +297,8 @@ public class Sequence {
 			if (playerTime == (int) ul[i])
 				return i + 1;
 		}
-		// SendMessage.sendMessagePlayer(player, Color.RED + "ë‹¹ì‹ ì˜ ëž­í¬ë¥¼ ì°¾ì„ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
-		// SendMessage.sendMessageOP(player.getName() + "ë‹˜ì˜ ëž­í¬ë¥¼ ì°¾ì„ìˆ˜ ì—†ëŠ” ì• ëŸ¬ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
+		// SendMessage.sendMessagePlayer(player, Color.RED + "당신의 랭크를 찾을수 없습니다.");
+		// SendMessage.sendMessageOP(player.getName() + "님의 랭크를 찾을수 없는 애러가 발생했습니다.");
 		return 0;
 
 	}

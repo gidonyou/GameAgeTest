@@ -1,4 +1,4 @@
-﻿package com.gmail.gidonyouyt.gameAge;
+package com.gmail.gidonyouyt.gameAge;
 
 import java.util.ArrayList;
 import java.util.List;

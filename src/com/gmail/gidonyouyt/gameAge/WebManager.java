@@ -1,4 +1,4 @@
-﻿package com.gmail.gidonyouyt.gameAge;
+package com.gmail.gidonyouyt.gameAge;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -45,11 +45,11 @@ public class WebManager {
 					Set<Player> NextPlayers = Sequence.getKeysByValue(Sequence.getRankList()[i]);
 
 					if (NextPlayers.isEmpty()) {
-						response += "<p style=\"color: red; margin: 2px;\">ì—†ìŒ</p>";
+						response += "<p style=\"color: red; margin: 2px;\">없음</p>";
 					} else {
 						for (Player p : NextPlayers) {
 							if (p == null) {
-								response += "<p style=\"color: red; margin: 2px;\">" + i + "ì• ëŸ¬</p>";
+								response += "<p style=\"color: red; margin: 2px;\">" + i + "애러</p>";
 								continue;
 							}
 							response += "<p style=\"margin: 2px;\">" + i + ". " + p.getName()
@@ -62,7 +62,7 @@ public class WebManager {
 				response += "</body>";
 
 			} else {
-				response += "<body><h1 style=\"color: red\">ê²Œìž„ ì‹œìž‘ ì•ˆí•¨</h1></body>";
+				response += "<body><h1 style=\"color: red\">게임 시작 안함</h1></body>";
 			}
 			byte[] bytes = response.getBytes(StandardCharsets.UTF_8);
 			t.sendResponseHeaders(200, bytes.length);

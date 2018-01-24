@@ -1,4 +1,4 @@
-﻿package com.gmail.gidonyouyt.gameAge;
+package com.gmail.gidonyouyt.gameAge;
 
 import java.util.logging.Logger;
 
@@ -20,8 +20,8 @@ import com.gmail.gidonyouyt.gameAge.events.PlayerPreLogin;
 
 public class GameAge extends JavaPlugin {
 
-	public static String pluginName = "ë²„ê·¸ë©ì–´ë¦¬";
-	public static String pluginVersion = "ë²„ê·¸ë²„ì „";
+	public static String pluginName = "버그덩어리";
+	public static String pluginVersion = "버그버전";
 	public ConfigYml yml = new ConfigYml(this);
 
 	public GameAge() {

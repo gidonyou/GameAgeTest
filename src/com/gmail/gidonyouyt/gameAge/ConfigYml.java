@@ -1,4 +1,4 @@
-﻿package com.gmail.gidonyouyt.gameAge;
+package com.gmail.gidonyouyt.gameAge;
 
 import com.gmail.gidonyouyt.gameAge.core.SendMessage;
 
@@ -33,7 +33,7 @@ public class ConfigYml {
 	}
 
 	public void updateSetting(GameSettings setting, double value) {
-		SendMessage.sendMessageOP(setting.name() + "ì„¤ì •ì´ ì—…ë°ì´íŠ¸ ë˜ì—ˆìŠµë‹ˆë‹¤.  " + setting.value() + " --> " + value);
+		SendMessage.sendMessageOP(setting.name() + "설정이 업데이트 되었습니다.  " + setting.value() + " --> " + value);
 		setting.value = value;
 		plugin.getConfig().set(setting.name(), value);
 		plugin.saveConfig();

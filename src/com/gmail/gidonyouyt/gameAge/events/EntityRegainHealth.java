@@ -1,4 +1,4 @@
-﻿package com.gmail.gidonyouyt.gameAge.events;
+package com.gmail.gidonyouyt.gameAge.events;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

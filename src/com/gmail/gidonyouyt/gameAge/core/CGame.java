@@ -1,4 +1,4 @@
-﻿package com.gmail.gidonyouyt.gameAge.core;
+package com.gmail.gidonyouyt.gameAge.core;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -19,7 +19,7 @@ public class CGame implements CommandExecutor {
 			return false;
 		
 		if (!sender.isOp()) {
-			sender.sendMessage(ChatColor.DARK_RED + "OP Ã«Â§Å’ Ã¬ÂÂ´Ã¬Å¡Â©Ã¬ÂÂ´ ÃªÂ°â‚¬Ã«Å Â¥Ã­â€¢Å“ Ã¬Â»Â¤Ã«Â©ËœÃ«â€œÅ“Ã¬Å¾â€¦Ã«â€¹Ë†Ã«â€¹Â¤.");
+			sender.sendMessage(ChatColor.DARK_RED + "OP 만 이용이 가능한 커멘드입니다.");
 			return true;
 		}
 
@@ -30,7 +30,7 @@ public class CGame implements CommandExecutor {
 				sender.sendMessage(GameStatus.getMessage());
 				return true;
 			}
-			SendMessage.broadcastMessage("ÃªÂ²Å’Ã¬Å¾â€žÃ¬ÂÂ´ " + ChatColor.GREEN + "Ã¬â€¹Å“Ã¬Å¾â€˜Ã«ÂÂ©Ã«â€¹Ë†Ã«â€¹Â¤.");
+			SendMessage.broadcastMessage("게임이 " + ChatColor.GREEN + "시작됩니다.");
 
 			// TODO test
 			Sequence.start();

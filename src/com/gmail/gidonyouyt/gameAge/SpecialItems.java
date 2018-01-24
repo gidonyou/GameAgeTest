@@ -1,4 +1,4 @@
-﻿package com.gmail.gidonyouyt.gameAge;
+package com.gmail.gidonyouyt.gameAge;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -55,8 +55,8 @@ public enum SpecialItems {
 
 		ItemStack is = new ItemStack(Material.BEDROCK);
 		ItemMeta meta = is.getItemMeta();
-		meta.setDisplayName(ChatColor.DARK_RED + "ê¸°ëˆìœ ì˜ ë²„ê·¸ ê¸°ë³¸ ì•„ì´í…œ");
-		meta.setLore(Arrays.asList(ChatColor.RED + "ì•„ë¬´ëŸ° ì˜ë¯¸ ì—†ëŠ” ì•„ì´í…œ", ChatColor.GRAY + "ê¸°ëˆìœ ì˜ ë²„ê·¸í…œ?"));
+		meta.setDisplayName(ChatColor.DARK_RED + "기돈유의 버그 기본 아이템");
+		meta.setLore(Arrays.asList(ChatColor.RED + "아무런 의미 없는 아이템", ChatColor.GRAY + "기돈유의 버그템?"));
 		is.setItemMeta(meta);
 		is.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
 		is.addUnsafeEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 1);
@@ -73,55 +73,55 @@ public enum SpecialItems {
 		case LOCATION_FINDER:
 			is = new ItemStack(Material.COMPASS);
 			meta = is.getItemMeta();
-			meta.setDisplayName(ChatColor.RESET + "ê°€ë¦¬í‚¤ëŠ” ë‚˜ì¹¨íŒ  " + ChatColor.GRAY + "(1íšŒìš©)");
-			lore.add(ChatColor.GREEN + "ìžì‹ ë³´ë‹¤ ë§Žì€ ì‹œê°„ì„ ê°€ì§€ê³  ìžˆëŠ” ì‚¬ëžŒì˜ ìœ„ì¹˜ë¥¼ ì•Œë ¤ì¤ë‹ˆë‹¤.");
+			meta.setDisplayName(ChatColor.RESET + "가리키는 나침판  " + ChatColor.GRAY + "(1회용)");
+			lore.add(ChatColor.GREEN + "자신보다 많은 시간을 가지고 있는 사람의 위치를 알려줍니다.");
 			lore.add(ChatColor.LIGHT_PURPLE
-					+ "%s ì´ˆ ì´ìš© ê°€ëŠ¥".replace("%s", String.valueOf(GameSettings.COMPASS_DURABILITY.value())));
-			lore.add(ChatColor.LIGHT_PURPLE + "ìš°í´ë¦­ìœ¼ë¡œ ì´ìš© ê°€ëŠ¥.");
-			lore.add(ChatColor.DARK_PURPLE + "ê³ ìœ ID: " + Math.floor(Math.random() * 100000));
+					+ "%s 초 이용 가능".replace("%s", String.valueOf(GameSettings.COMPASS_DURABILITY.value())));
+			lore.add(ChatColor.LIGHT_PURPLE + "우클릭으로 이용 가능.");
+			lore.add(ChatColor.DARK_PURPLE + "고유ID: " + Math.floor(Math.random() * 100000));
 			break;
 
 		case PLAYER_TIME_ABOVE:
 			is = new ItemStack(Material.INK_SACK, 1, (short) 1);
 			meta = is.getItemMeta();
-			meta.setDisplayName(ChatColor.RESET + "ë§Žì€ ì‹œê°„ì˜ ìœ ì €  " + ChatColor.GRAY + "(1íšŒìš©)");
-			lore.add(ChatColor.GREEN + "ìžì‹ ë³´ë‹¤ ë§Žì€ ì‹œê°„ì„ ê°€ì§€ê³  ìžˆëŠ” ì‚¬ëžŒì˜ ì´ë¦„ì„ ì•Œë ¤ì¤ë‹ˆë‹¤.");
-			lore.add(ChatColor.LIGHT_PURPLE + "ìš°í´ë¦­ìœ¼ë¡œ ì´ìš© ê°€ëŠ¥.");
+			meta.setDisplayName(ChatColor.RESET + "많은 시간의 유저  " + ChatColor.GRAY + "(1회용)");
+			lore.add(ChatColor.GREEN + "자신보다 많은 시간을 가지고 있는 사람의 이름을 알려줍니다.");
+			lore.add(ChatColor.LIGHT_PURPLE + "우클릭으로 이용 가능.");
 			break;
 
 		case PLAYER_TIME_BELOW:
 			is = new ItemStack(Material.INK_SACK, 1, (short) 4);
 			meta = is.getItemMeta();
-			meta.setDisplayName(ChatColor.RESET + "ì ì€ ì‹œê°„ì˜ ìœ ì €  " + ChatColor.GRAY + "(1íšŒìš©)");
-			lore.add(ChatColor.GREEN + "ìžì‹ ë³´ë‹¤ ì ì€ ì‹œê°„ì„ ê°€ì§€ê³  ìžˆëŠ” ì‚¬ëžŒì˜ ì´ë¦„ì„ ì•Œë ¤ì¤ë‹ˆë‹¤.");
-			lore.add(ChatColor.LIGHT_PURPLE + "ìš°í´ë¦­ìœ¼ë¡œ ì´ìš© ê°€ëŠ¥.");
+			meta.setDisplayName(ChatColor.RESET + "적은 시간의 유저  " + ChatColor.GRAY + "(1회용)");
+			lore.add(ChatColor.GREEN + "자신보다 적은 시간을 가지고 있는 사람의 이름을 알려줍니다.");
+			lore.add(ChatColor.LIGHT_PURPLE + "우클릭으로 이용 가능.");
 			break;
 
 		case PLAYER_TIME_LIST:
 			is = new ItemStack(Material.BOOK);
 			meta = is.getItemMeta();
-			meta.setDisplayName(ChatColor.RESET + "ì£½ìŒì˜ ì±…  " + ChatColor.GRAY + "(1íšŒìš©)");
-			lore.add(ChatColor.GREEN + "ëª¨ë“ ì‚¬ëžŒì˜ ì£½ëŠ” ìˆœì„œë¥¼ ì•Œë ¤ì¤ë‹ˆë‹¤.");
-			lore.add(ChatColor.LIGHT_PURPLE + "ìš°í´ë¦­ìœ¼ë¡œ ì´ìš© ê°€ëŠ¥.");
+			meta.setDisplayName(ChatColor.RESET + "죽음의 책  " + ChatColor.GRAY + "(1회용)");
+			lore.add(ChatColor.GREEN + "모든사람의 죽는 순서를 알려줍니다.");
+			lore.add(ChatColor.LIGHT_PURPLE + "우클릭으로 이용 가능.");
 			break;
 
 		case DIAMOND_SWORD:
 			is = new ItemStack(Material.DIAMOND_SWORD);
 			meta = is.getItemMeta();
-			meta.setDisplayName(ChatColor.GOLD + "ë‹¤ì´ì•„ ì¹¼");
-			lore.add(ChatColor.GREEN + "ë‹¹ì‹ ì€ í–‰ìš´ì˜ ë‹¤ì´ì•„ ì¹¼ì„ ë°›ìœ¼ì…¨ìŠµë‹ˆë‹¤.");
-			lore.add(ChatColor.LIGHT_PURPLE + "ì¹¼ì²˜ëŸ¼ ì´ìš© ê°€ëŠ¥");
+			meta.setDisplayName(ChatColor.GOLD + "다이아 칼");
+			lore.add(ChatColor.GREEN + "당신은 행운의 다이아 칼을 받으셨습니다.");
+			lore.add(ChatColor.LIGHT_PURPLE + "칼처럼 이용 가능");
 			meta.setUnbreakable(true);
 			break;
 			
 		case GOLD_SWORD:
 			is = new ItemStack(Material.GOLD_SWORD);
 			meta = is.getItemMeta();
-			meta.setDisplayName(ChatColor.GOLD + "ê¸ˆ ì¹¼  " + ChatColor.GRAY + "(1íšŒìš©)");
-			lore.add(ChatColor.GREEN + "ì´ ì¹¼ì€ ì–´ë§ˆì–´ë§ˆí•œ ë°ë¯¸ì§€ë¥¼");
-			lore.add(ChatColor.GREEN + "ê°€ì§€ê³  ìžˆì§€ë§Œ 1ë²ˆë§Œ ì´ìš© ê°€ëŠ¥í•©ë‹ˆë‹¤.");
-			lore.add(ChatColor.BLUE + "ë°ë¯¸ì§€: " + ChatColor.YELLOW + "í•˜íŠ¸ 5ì¹¸");
-			lore.add(ChatColor.LIGHT_PURPLE + "ì¹¼ì²˜ëŸ¼ ì´ìš© ê°€ëŠ¥");
+			meta.setDisplayName(ChatColor.GOLD + "금 칼  " + ChatColor.GRAY + "(1회용)");
+			lore.add(ChatColor.GREEN + "이 칼은 어마어마한 데미지를");
+			lore.add(ChatColor.GREEN + "가지고 있지만 1번만 이용 가능합니다.");
+			lore.add(ChatColor.BLUE + "데미지: " + ChatColor.YELLOW + "하트 5칸");
+			lore.add(ChatColor.LIGHT_PURPLE + "칼처럼 이용 가능");
 			meta.setUnbreakable(true);
 			is.setItemMeta(meta);
 			
@@ -146,94 +146,94 @@ public enum SpecialItems {
 		case IRON_SWORD:
 			is = new ItemStack(Material.IRON_SWORD);
 			meta = is.getItemMeta();
-			meta.setDisplayName(ChatColor.GOLD + "ì²  ì¹¼");
-			lore.add(ChatColor.GREEN + "ë‹¹ì‹ ì€ í–‰ìš´ì˜ ì² ì² ì²  ì¹¼ì„ ë°›ìœ¼ì…¨ìŠµë‹ˆë‹¤.");
-			lore.add(ChatColor.LIGHT_PURPLE + "ì¹¼ì²˜ëŸ¼ ì´ìš© ê°€ëŠ¥");
+			meta.setDisplayName(ChatColor.GOLD + "철 칼");
+			lore.add(ChatColor.GREEN + "당신은 행운의 철철철 칼을 받으셨습니다.");
+			lore.add(ChatColor.LIGHT_PURPLE + "칼처럼 이용 가능");
 			meta.setUnbreakable(true);
 			break;
 
 		case STONE_SWORD:
 			is = new ItemStack(Material.STONE_SWORD);
 			meta = is.getItemMeta();
-			meta.setDisplayName(ChatColor.GOLD + "ëŒ ì¹¼");
-			lore.add(ChatColor.GREEN + "ë‹¹ì‹ ì€ í–‰ìš´ì˜ ëŒ ì¹¼ì„ ë°›ìœ¼ì…¨ìŠµë‹ˆë‹¤.");
-			lore.add(ChatColor.LIGHT_PURPLE + "ì¹¼ì²˜ëŸ¼ ì´ìš© ê°€ëŠ¥");
+			meta.setDisplayName(ChatColor.GOLD + "돌 칼");
+			lore.add(ChatColor.GREEN + "당신은 행운의 돌 칼을 받으셨습니다.");
+			lore.add(ChatColor.LIGHT_PURPLE + "칼처럼 이용 가능");
 			meta.setUnbreakable(true);
 			break;
 
 		case WOOD_SWORD:
 			is = new ItemStack(Material.WOOD_SWORD);
 			meta = is.getItemMeta();
-			meta.setDisplayName(ChatColor.GOLD + "ê¸°ë³¸ ì¹¼");
-			lore.add(ChatColor.GREEN + "ëª¨ë‘ì—ê²Œ ì§€ê¸‰ë˜ëŠ” ë‚˜ë¬´ì¹¼");
-			lore.add(ChatColor.LIGHT_PURPLE + "ì¹¼ì²˜ëŸ¼ ì´ìš© ê°€ëŠ¥");
+			meta.setDisplayName(ChatColor.GOLD + "기본 칼");
+			lore.add(ChatColor.GREEN + "모두에게 지급되는 나무칼");
+			lore.add(ChatColor.LIGHT_PURPLE + "칼처럼 이용 가능");
 			meta.setUnbreakable(true);
 			break;
 
 		case FIRST_AID:
 			is = new ItemStack(Material.CLAY_BRICK);
 			meta = is.getItemMeta();
-			meta.setDisplayName(ChatColor.RESET + "êµ¬ê¸‰ìƒìž  " + ChatColor.GRAY + "(1íšŒìš©)");
-			lore.add(ChatColor.GREEN + "ìžì‹ ì˜ ì²´ë ¥ì„ ìµœëŒ€ 4ì¹¸ê¹Œì§€ ì¹˜ìœ í•©ë‹ˆë‹¤.");
-			lore.add(ChatColor.LIGHT_PURPLE + "ìš°í´ë¦­ìœ¼ë¡œ ì´ìš© ê°€ëŠ¥.");
+			meta.setDisplayName(ChatColor.RESET + "구급상자  " + ChatColor.GRAY + "(1회용)");
+			lore.add(ChatColor.GREEN + "자신의 체력을 최대 4칸까지 치유합니다.");
+			lore.add(ChatColor.LIGHT_PURPLE + "우클릭으로 이용 가능.");
 			lore.add(ChatColor.LIGHT_PURPLE + "");
-			lore.add(ChatColor.YELLOW + "ì¿¨íƒ€ìž„: 6ì´ˆ");
+			lore.add(ChatColor.YELLOW + "쿨타임: 6초");
 			break;
 
 		case BANDAGE:
 			is = new ItemStack(Material.PAPER);
 			meta = is.getItemMeta();
-			meta.setDisplayName(ChatColor.RESET + "ë¶•ëŒ€  " + ChatColor.GRAY + "(1íšŒìš©)");
-			lore.add(ChatColor.GREEN + "ìžì‹ ì˜ ì²´ë ¥ì„ ìµœëŒ€ 1.5ì¹¸ê¹Œì§€ ì¹˜ìœ í•©ë‹ˆë‹¤.");
-			lore.add(ChatColor.LIGHT_PURPLE + "ìš°í´ë¦­ìœ¼ë¡œ ì´ìš© ê°€ëŠ¥.");
+			meta.setDisplayName(ChatColor.RESET + "붕대  " + ChatColor.GRAY + "(1회용)");
+			lore.add(ChatColor.GREEN + "자신의 체력을 최대 1.5칸까지 치유합니다.");
+			lore.add(ChatColor.LIGHT_PURPLE + "우클릭으로 이용 가능.");
 			lore.add(ChatColor.LIGHT_PURPLE + "");
-			lore.add(ChatColor.YELLOW + "ì¿¨íƒ€ìž„: 3ì´ˆ");
+			lore.add(ChatColor.YELLOW + "쿨타임: 3초");
 			break;
 
 		case STEAL_TARGET:
 			is = new ItemStack(Material.BOOK_AND_QUILL);
 			meta = is.getItemMeta();
-			meta.setDisplayName(ChatColor.RESET + "ìƒëŒ€ë°© ìˆ˜ëª…ëºê¸°  " + ChatColor.GRAY + "(1íšŒìš©)");
-			lore.add(ChatColor.GREEN + "ì§€ëª© ìƒëŒ€ì—ì„œ ì‹œê°„ì„ ëºìŠµë‹ˆë‹¤.");
-			lore.add("%i ì´ˆ ì´ìƒ ë‚¨ì€ ìƒëŒ€ì—ê²Œ %s ì´ˆ ê°•íƒˆ"
+			meta.setDisplayName(ChatColor.RESET + "상대방 수명뺏기  " + ChatColor.GRAY + "(1회용)");
+			lore.add(ChatColor.GREEN + "지목 상대에서 시간을 뺏습니다.");
+			lore.add("%i 초 이상 남은 상대에게 %s 초 강탈"
 					.replace("%i",
 							ChatColor.YELLOW + String.valueOf(GameSettings.STEAL_IMMUNE_TIME_SEC.value())
 									+ ChatColor.BLUE)
 					.replace("%s",
 							ChatColor.RED + String.valueOf(GameSettings.STEAL_TIME_SEC.value()) + ChatColor.BLUE));
 			lore.add("");
-			lore.add(ChatColor.DARK_RED + "ì£¼ì˜: 1íŽ˜ì´ì§€ì— ");
-			lore.add(ChatColor.DARK_RED + "ì§€ëª©ì¸ ì´ë¦„ì„ ì •í™•ížˆ ìž…ë ¥í•˜ì„¸ìš” ");
+			lore.add(ChatColor.DARK_RED + "주의: 1페이지에 ");
+			lore.add(ChatColor.DARK_RED + "지목인 이름을 정확히 입력하세요 ");
 			lore.add("");
-			lore.add(ChatColor.LIGHT_PURPLE + "ì±…ì— ì“´í›„ ì„œëª…í›„");
-			lore.add(ChatColor.LIGHT_PURPLE + "ìš°í´ë¦­ í•˜ë©´ ì´ìš© ê°€ëŠ¥");
+			lore.add(ChatColor.LIGHT_PURPLE + "책에 쓴후 서명후");
+			lore.add(ChatColor.LIGHT_PURPLE + "우클릭 하면 이용 가능");
 			break;
 
 		case EARN_SECONDS:
 			is = new ItemStack(Material.REDSTONE);
 			meta = is.getItemMeta();
-			meta.setDisplayName(ChatColor.RESET + "ì‹œê°„ì¶”ê°€  " + ChatColor.GRAY + "(1íšŒìš©)");
-			lore.add(ChatColor.GREEN + "ìžì‹ ì—ê²Œ %s ì´ˆë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤.".replace("%s",
+			meta.setDisplayName(ChatColor.RESET + "시간추가  " + ChatColor.GRAY + "(1회용)");
+			lore.add(ChatColor.GREEN + "자신에게 %s 초를 추가합니다.".replace("%s",
 					ChatColor.YELLOW + String.valueOf(GameSettings.EARN_SECOUNDS_TIME.value()) + ChatColor.GREEN));
-			lore.add(ChatColor.LIGHT_PURPLE + "ìš°í´ë¦­ìœ¼ë¡œ ì´ìš© ê°€ëŠ¥.");
+			lore.add(ChatColor.LIGHT_PURPLE + "우클릭으로 이용 가능.");
 			break;
 			
 		case INVISIBILITY_WATCH:
 			is = new ItemStack(Material.GOLD_RECORD);
 			meta = is.getItemMeta();
-			meta.setDisplayName(ChatColor.RESET + "íˆ¬ëª…í™” ì‹œê³„  " + ChatColor.GRAY + "(1íšŒìš©)");
-			lore.add(ChatColor.GREEN + "%s ì´ˆë™ì•ˆ íˆ¬ëª…í•´ì§‘ë‹ˆë‹¤.".replace("%s",
+			meta.setDisplayName(ChatColor.RESET + "투명화 시계  " + ChatColor.GRAY + "(1회용)");
+			lore.add(ChatColor.GREEN + "%s 초동안 투명해집니다.".replace("%s",
 					ChatColor.YELLOW + String.valueOf(GameSettings.IS_INVISIBILITY.value()) + ChatColor.GREEN));
-			lore.add(ChatColor.LIGHT_PURPLE + "ìš°í´ë¦­ìœ¼ë¡œ ì´ìš© ê°€ëŠ¥.");
+			lore.add(ChatColor.LIGHT_PURPLE + "우클릭으로 이용 가능.");
 			break;
 			
 		case ENDER_PEARL:
 			is = new ItemStack(Material.ENDER_PEARL);
 			meta = is.getItemMeta();
-			meta.setDisplayName(ChatColor.RESET + "ì—”ë” ì§„ì£¼  " + ChatColor.GRAY + "(1íšŒìš©)");
-			lore.add(ChatColor.GREEN + "í…”ë ˆí¬íŠ¸ë¥¼ ê°€ëŠ¥í•˜ê²Œ í•´ì£¼ëŠ” ì•„ì´í…œ.".replace("%s",
+			meta.setDisplayName(ChatColor.RESET + "엔더 진주  " + ChatColor.GRAY + "(1회용)");
+			lore.add(ChatColor.GREEN + "텔레포트를 가능하게 해주는 아이템.".replace("%s",
 					ChatColor.YELLOW + String.valueOf(GameSettings.EARN_SECOUNDS_TIME.value()) + ChatColor.GREEN));
-			lore.add(ChatColor.LIGHT_PURPLE + "ì—”ë” ì§„ì£¼ì²˜ëŸ¼ ì´ìš© ê°€ëŠ¥");
+			lore.add(ChatColor.LIGHT_PURPLE + "엔더 진주처럼 이용 가능");
 			break;
 			
 			

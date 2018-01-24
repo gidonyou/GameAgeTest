@@ -1,4 +1,4 @@
-﻿package com.gmail.gidonyouyt.gameAge;
+package com.gmail.gidonyouyt.gameAge;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -32,7 +32,7 @@ public class ItemDistribute {
 		clearAllBlock();
 
 		if (!(allChests.isEmpty())) {
-			SendMessage.sendMessageOP(ChatColor.RED + "ë°°ë¶„ì• ëŸ¬: ìƒìž db ê°€ ë¹„ì–´ìžˆì§€ ì•ŠìŠµë‹ˆë‹¤. ì—ëŸ¬ - ì•„ì´í…œ ë°°ë¶„ ì‹¤íŒ¨");
+			SendMessage.sendMessageOP(ChatColor.RED + "배분애러: 상자 db 가 비어있지 않습니다. 에러 - 아이템 배분 실패");
 			for (Location l : allChests)
 				SendMessage.sendMessageOP(l.toString());
 			return false;
@@ -81,7 +81,7 @@ public class ItemDistribute {
 				// Bukkit.broadcastMessage("FAILED");
 				failedAttempts++;
 				if (failedAttempts == GameSettings.MAX_CHEST_FAIL.value()) {
-					SendMessage.sendMessageOP(ChatColor.RED + "ë°°ë¶„ì• ëŸ¬: ì„¤ì •ì— í‘œê¸°ëœ ì‹œë„ë§Œí¼ í–ˆì§€ë§Œ ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤.");
+					SendMessage.sendMessageOP(ChatColor.RED + "배분애러: 설정에 표기된 시도만큼 했지만 실패했습니다.");
 					return false;
 				}
 				continue;
@@ -97,7 +97,7 @@ public class ItemDistribute {
 			allChests.add(location);
 			i++;
 		}
-//		SendMessage.broadcastMessage(failedAttempts + "ì‹¤íŒ¨ ëì— ì„±ê³µ");
+//		SendMessage.broadcastMessage(failedAttempts + "실패 끝에 성공");
 		failedAttempts = 0;
 		return true;
 	}

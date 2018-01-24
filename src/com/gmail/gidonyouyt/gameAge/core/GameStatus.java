@@ -1,4 +1,4 @@
-﻿package com.gmail.gidonyouyt.gameAge.core;
+package com.gmail.gidonyouyt.gameAge.core;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -28,7 +28,7 @@ public enum GameStatus {
 	private static GameStatus currentStatus = GameStatus.STANDBY;
 
 	public static void setStatus(GameStatus newStatus) {
-		SendMessage.sendMessageOP(ChatColor.GRAY + "ÃªÂ²Å’Ã¬Å¾â€žÃ¬Æ’ÂÃ­Æ’Å“ÃªÂ°â‚¬ Ã«Â³â‚¬ÃªÂ²Â½Ã«ÂËœÃ¬â€”Ë†Ã¬Å ÂµÃ«â€¹Ë†Ã«â€¹Â¤. %old% --> %new%"
+		SendMessage.sendMessageOP(ChatColor.GRAY + "게임상태가 변경되었습니다. %old% --> %new%"
 				.replace("%old%", currentStatus.toString()).replace("%new%", newStatus.toString()));
 		currentStatus = newStatus;
 	}
@@ -42,7 +42,7 @@ public enum GameStatus {
 	}
 
 	public static String getMessage() {
-		return ChatColor.GOLD + "ÃªÂ²Å’Ã¬Å¾â€žÃ¬Æ’ÂÃ­Æ’Å“ : " + currentStatus.color + currentStatus.toString();
+		return ChatColor.GOLD + "게임상태 : " + currentStatus.color + currentStatus.toString();
 	}
 
 }
