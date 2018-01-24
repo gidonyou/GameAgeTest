@@ -58,7 +58,7 @@ public class TitleManager {
 
 		String json = "{\"text\":\"" + text + "\",\"color\":\"" + color
 				+ "\",\"clickEvent\":{\"action\":\"open_url\",\"value\":\"" + link
-				+ "\"},\"hoverEvent\":{\"action\":\"show_text\",\"value\":{\"text\":\"\",\"extra\":[{\"text\":\"클릭하여 열기\",\"color\":\"gold\"}]}}}";
+				+ "\"},\"hoverEvent\":{\"action\":\"show_text\",\"value\":{\"text\":\"\",\"extra\":[{\"text\":\"í´ë¦­í•˜ì—¬ ì—´ê¸°\",\"color\":\"gold\"}]}}}";
 
 		sendClickableText(player, json);
 	}
@@ -67,19 +67,19 @@ public class TitleManager {
 
 		String json = "{\"text\":\"" + text + "\",\"color\":\"" + color
 				+ "\",\"clickEvent\":{\"action\":\"open_url\",\"value\":\"" + link
-				+ "\"},\"hoverEvent\":{\"action\":\"show_text\",\"value\":{\"text\":\"\",\"extra\":[{\"text\":\"클릭하여 열기\",\"color\":\"gold\"}]}}}";
+				+ "\"},\"hoverEvent\":{\"action\":\"show_text\",\"value\":{\"text\":\"\",\"extra\":[{\"text\":\"í´ë¦­í•˜ì—¬ ì—´ê¸°\",\"color\":\"gold\"}]}}}";
 		for (Player player : Bukkit.getOnlinePlayers())
 			sendClickableText(player, json);
 	}
 
 	public static void countDown(Player player, int i) {
 		if (i > 0)
-			displayTitle(player, i + " 초 뒤에 게임이 시작됩니다", "green", "준비하세요!", "orange");
+			displayTitle(player, i + " ì´ˆ ë’¤ì— ê²Œìž„ì´ ì‹œìž‘ë©ë‹ˆë‹¤", "green", "ì¤€ë¹„í•˜ì„¸ìš”!", "orange");
 		else if (i == 0)
 			displayTitle(player, "Game START!", "blue", null, null);
 
 		else
-			displayTitle(player, "오류 발생", "red", "개발자: 이건 예측하지 못했어", "dark_red");
+			displayTitle(player, "ì˜¤ë¥˜ ë°œìƒ", "red", "ê°œë°œìž: ì´ê±´ ì˜ˆì¸¡í•˜ì§€ ëª»í–ˆì–´", "dark_red");
 
 	}
 

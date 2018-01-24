@@ -13,7 +13,7 @@ public class PlayerLeave implements Listener {
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		if (GameStatus.getStatus() != GameStatus.RUNNING)
 			return;
-		event.setQuitMessage(event.getPlayer().getName() + "님이 도주하셨습니다.");
+		event.setQuitMessage(event.getPlayer().getName() + "ë‹˜ì´ ë„ì£¼í•˜ì…¨ìŠµë‹ˆë‹¤.");
 		
 		Sequence.out(event.getPlayer());
 		

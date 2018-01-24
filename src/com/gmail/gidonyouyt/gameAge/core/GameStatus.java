@@ -28,7 +28,7 @@ public enum GameStatus {
 	private static GameStatus currentStatus = GameStatus.STANDBY;
 
 	public static void setStatus(GameStatus newStatus) {
-		SendMessage.sendMessageOP(ChatColor.GRAY + "게임상태가 변경되었습니다. %old% --> %new%"
+		SendMessage.sendMessageOP(ChatColor.GRAY + "ê²Œìž„ìƒíƒœê°€ ë³€ê²½ë˜ì—ˆìŠµë‹ˆë‹¤. %old% --> %new%"
 				.replace("%old%", currentStatus.toString()).replace("%new%", newStatus.toString()));
 		currentStatus = newStatus;
 	}
@@ -42,7 +42,7 @@ public enum GameStatus {
 	}
 
 	public static String getMessage() {
-		return ChatColor.GOLD + "게임상태 : " + currentStatus.color + currentStatus.toString();
+		return ChatColor.GOLD + "ê²Œìž„ìƒíƒœ : " + currentStatus.color + currentStatus.toString();
 	}
 
 }

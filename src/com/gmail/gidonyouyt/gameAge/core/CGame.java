@@ -19,7 +19,7 @@ public class CGame implements CommandExecutor {
 			return false;
 		
 		if (!sender.isOp()) {
-			sender.sendMessage(ChatColor.DARK_RED + "OP 만 이용이 가능한 커멘드입니다.");
+			sender.sendMessage(ChatColor.DARK_RED + "OP ë§Œ ì´ìš©ì´ ê°€ëŠ¥í•œ ì»¤ë©˜ë“œìž…ë‹ˆë‹¤.");
 			return true;
 		}
 
@@ -30,7 +30,7 @@ public class CGame implements CommandExecutor {
 				sender.sendMessage(GameStatus.getMessage());
 				return true;
 			}
-			SendMessage.broadcastMessage("게임이 " + ChatColor.GREEN + "시작됩니다.");
+			SendMessage.broadcastMessage("ê²Œìž„ì´ " + ChatColor.GREEN + "ì‹œìž‘ë©ë‹ˆë‹¤.");
 
 			// TODO test
 			Sequence.start();
