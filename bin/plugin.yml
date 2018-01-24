@@ -1,0 +1,1 @@
+name: GameAgemain: com.gmail.gidonyouyt.gameAge.GameAgeversion: v1.1.0Dauthor: gidonyoudescription: Game Age Tag - Minecraft Minigame Plugincommands:     game:          usage: /game {arg}          description: GameManager          aliases: [g, gm]     play:          description: Play Game Development          aliases: [p]
