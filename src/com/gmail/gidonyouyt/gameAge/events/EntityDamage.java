@@ -1,4 +1,4 @@
-package com.gmail.gidonyouyt.gameAge.events;
+﻿package com.gmail.gidonyouyt.gameAge.events;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -25,7 +25,7 @@ public class EntityDamage implements Listener {
 
 			if (GameStatus.getStatus() == GameStatus.COUNT_DOWN) {
 				event.setCancelled(true);
-				SendMessage.sendMessagePlayer(player, "게임 시작전에는 공격하실수 없습니다");
+				SendMessage.sendMessagePlayer(player, "ê²Œìž„ ì‹œìž‘ì „ì—ëŠ” ê³µê²©í•˜ì‹¤ìˆ˜ ì—†ìŠµë‹ˆë‹¤");
 				return;
 			}
 
@@ -48,7 +48,7 @@ public class EntityDamage implements Listener {
 				for (Player p : Bukkit.getOnlinePlayers()) {
 					if (!Sequence.getPlayerPlaying().contains(p))
 						SendMessage.sendMessagePlayer(player,
-								player.getName() + "님의 죽은이유 -- " + event.getCause().name());
+								player.getName() + "ë‹˜ì˜ ì£½ì€ì´ìœ  -- " + event.getCause().name());
 				}
 			}
 		}
@@ -64,7 +64,7 @@ public class EntityDamage implements Listener {
 
 		if (GameStatus.getStatus() == GameStatus.COUNT_DOWN) {
 			event.setCancelled(true);
-			SendMessage.sendMessagePlayer(damager, "게임 시작전에는 공격하실수 없습니다");
+			SendMessage.sendMessagePlayer(damager, "ê²Œìž„ ì‹œìž‘ì „ì—ëŠ” ê³µê²©í•˜ì‹¤ìˆ˜ ì—†ìŠµë‹ˆë‹¤");
 			return;
 		}
 
@@ -109,17 +109,17 @@ public class EntityDamage implements Listener {
 
 		Sequence.out(killed);
 
-		SendMessage.sendMessagePlayer(killer, killed.getName() + " 님을 죽이셨습니다.");
+		SendMessage.sendMessagePlayer(killer, killed.getName() + " ë‹˜ì„ ì£½ì´ì…¨ìŠµë‹ˆë‹¤.");
 		int leftOver = Sequence.getPlayerTime().get(killed) / 2;
 		int newTime = Sequence.getPlayerTime().get(killer) + leftOver;
 		Sequence.updateTime(killer, newTime);
 		SendMessage.sendMessagePlayer(killer,
-				"당신은 %s 초를 받으셨습니다.".replace("%s", ChatColor.GREEN + String.valueOf(leftOver) + ChatColor.RESET));
+				"ë‹¹ì‹ ì€ %s ì´ˆë¥¼ ë°›ìœ¼ì…¨ìŠµë‹ˆë‹¤.".replace("%s", ChatColor.GREEN + String.valueOf(leftOver) + ChatColor.RESET));
 
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			if (!Sequence.getPlayerPlaying().contains(p))
 				SendMessage.sendMessagePlayer(p,
-						"%s 님이 %t 을 아웃시켰습니다.".replace("%s", killer.getName()).replace("%t", killed.getName()));
+						"%s ë‹˜ì´ %t ì„ ì•„ì›ƒì‹œì¼°ìŠµë‹ˆë‹¤.".replace("%s", killer.getName()).replace("%t", killed.getName()));
 		}
 	}
 

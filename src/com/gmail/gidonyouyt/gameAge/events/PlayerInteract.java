@@ -1,4 +1,4 @@
-package com.gmail.gidonyouyt.gameAge.events;
+﻿package com.gmail.gidonyouyt.gameAge.events;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,7 +48,7 @@ public class PlayerInteract implements Listener {
 		
 		if (GameStatus.getStatus() == GameStatus.COUNT_DOWN) {
 			event.setCancelled(true);
-			SendMessage.sendMessagePlayer(player, "게임 시작전에는 사용하실 수 없습니다.");
+			SendMessage.sendMessagePlayer(player, "ê²Œìž„ ì‹œìž‘ì „ì—ëŠ” ì‚¬ìš©í•˜ì‹¤ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 			return;
 		}
 
@@ -68,42 +68,42 @@ public class PlayerInteract implements Listener {
 				if (author == null || playerAuthor == null)
 					return;
 				if (GameStatus.getStatus() != GameStatus.RUNNING) {
-					SendMessage.sendMessagePlayer(player, "본 아이템은 게임중에만 이용하실수 있습니다.");
+					SendMessage.sendMessagePlayer(player, "ë³¸ ì•„ì´í…œì€ ê²Œìž„ì¤‘ì—ë§Œ ì´ìš©í•˜ì‹¤ìˆ˜ ìžˆìŠµë‹ˆë‹¤.");
 					return;
 				}
 				if (!Sequence.getPlayerPlaying().contains(player)) {
-					SendMessage.sendMessagePlayer(player, "본 아이템은 게임참가자만 이용하실수 있습니다.");
+					SendMessage.sendMessagePlayer(player, "ë³¸ ì•„ì´í…œì€ ê²Œìž„ì°¸ê°€ìžë§Œ ì´ìš©í•˜ì‹¤ìˆ˜ ìžˆìŠµë‹ˆë‹¤.");
 					return;
 				}
 				if (player == playerAuthor) {
 					Player target = Bukkit.getPlayer(bm.getPage(1));
 					if (target == null) {
-						SendMessage.sendMessagePlayer(playerAuthor, ChatColor.DARK_RED + "그대의 지목을 찾을수 없다.");
+						SendMessage.sendMessagePlayer(playerAuthor, ChatColor.DARK_RED + "ê·¸ëŒ€ì˜ ì§€ëª©ì„ ì°¾ì„ìˆ˜ ì—†ë‹¤.");
 					} else {
 						if (!(Sequence.getPlayerPlaying().contains(target)
 								|| Sequence.getPlayerTime().containsKey(target))) {
-							SendMessage.sendMessagePlayer(playerAuthor, ChatColor.DARK_RED + "그대의 지목은 게임중이 아니다.");
+							SendMessage.sendMessagePlayer(playerAuthor, ChatColor.DARK_RED + "ê·¸ëŒ€ì˜ ì§€ëª©ì€ ê²Œìž„ì¤‘ì´ ì•„ë‹ˆë‹¤.");
 						} else {
 							HashMap<Player, Integer> pTimes = Sequence.getPlayerTime();
 							int targetTime = pTimes.get(target);
 							double immuneTime = GameSettings.STEAL_IMMUNE_TIME_SEC.value();
 							if (targetTime <= immuneTime) {
 								SendMessage.sendMessagePlayer(playerAuthor,
-										ChatColor.DARK_RED + "그대의 지목은 " + immuneTime + " 미만이기에 실패.");
+										ChatColor.DARK_RED + "ê·¸ëŒ€ì˜ ì§€ëª©ì€ " + immuneTime + " ë¯¸ë§Œì´ê¸°ì— ì‹¤íŒ¨.");
 							} else {
 								pTimes.put(player, (int) (pTimes.get(player) + GameSettings.STEAL_TIME_SEC.value()));
 								pTimes.put(target, (int) (pTimes.get(target) - GameSettings.STEAL_TIME_SEC.value()));
-								SendMessage.sendMessagePlayer(player, ChatColor.BLUE + "그대의 지목에서 %t 초를 뺏었다"
+								SendMessage.sendMessagePlayer(player, ChatColor.BLUE + "ê·¸ëŒ€ì˜ ì§€ëª©ì—ì„œ %t ì´ˆë¥¼ ëºì—ˆë‹¤"
 										.replace("%t", String.valueOf(GameSettings.STEAL_TIME_SEC.value())));
 								SendMessage.sendMessagePlayer(target,
-										ChatColor.RED + "그대는 %s 한테  %t 초를 뺏겼다".replace("%s", player.getName())
+										ChatColor.RED + "ê·¸ëŒ€ëŠ” %s í•œí…Œ  %t ì´ˆë¥¼ ëºê²¼ë‹¤".replace("%s", player.getName())
 												.replace("%t", String.valueOf(GameSettings.STEAL_TIME_SEC.value())));
 								target.playSound(target.getLocation(), Sound.ENTITY_ENDERMEN_TELEPORT, 1, 1);
 							}
 						}
 					}
 				} else {
-					SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "그대는 이책의 주인이 아닙니다.");
+					SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "ê·¸ëŒ€ëŠ” ì´ì±…ì˜ ì£¼ì¸ì´ ì•„ë‹™ë‹ˆë‹¤.");
 				}
 
 				removeItem(event);
@@ -111,26 +111,26 @@ public class PlayerInteract implements Listener {
 					.equals(SpecialItems.LOCATION_FINDER.get().getItemMeta().getDisplayName())) {
 				double left0 = GameSettings.COMPASS_DURABILITY.value();
 				if (GameStatus.getStatus() != GameStatus.RUNNING) {
-					SendMessage.sendMessagePlayer(player, "본 아이템은 게임중에만 이용하실수 있습니다.");
+					SendMessage.sendMessagePlayer(player, "ë³¸ ì•„ì´í…œì€ ê²Œìž„ì¤‘ì—ë§Œ ì´ìš©í•˜ì‹¤ìˆ˜ ìžˆìŠµë‹ˆë‹¤.");
 					return;
 				}
 				if (left0 <= 0) {
-					SendMessage.sendMessagePlayer(player, ChatColor.RED + "본 나침판은 수명이 다했습니다.");
+					SendMessage.sendMessagePlayer(player, ChatColor.RED + "ë³¸ ë‚˜ì¹¨íŒì€ ìˆ˜ëª…ì´ ë‹¤í–ˆìŠµë‹ˆë‹¤.");
 				} else {
 
 					int playerRank = Sequence.getRank(player);
 					if (playerRank <= 1) {
-						SendMessage.sendMessagePlayer(player, ChatColor.RED + "당신보다 시간이 많이 남은사람이 없습니다.");
+						SendMessage.sendMessagePlayer(player, ChatColor.RED + "ë‹¹ì‹ ë³´ë‹¤ ì‹œê°„ì´ ë§Žì´ ë‚¨ì€ì‚¬ëžŒì´ ì—†ìŠµë‹ˆë‹¤.");
 					} else {
 						Set<Player> NextPlayers = Sequence.getKeysByValue(Sequence.getRankList()[playerRank - 2]);
 						if (NextPlayers.isEmpty()) {
-							SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "애러: 다음플레이어 찾을수 없음");
+							SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "ì• ëŸ¬: ë‹¤ìŒí”Œë ˆì´ì–´ ì°¾ì„ìˆ˜ ì—†ìŒ");
 						} else {
 							Player np = (Player) NextPlayers.toArray()[0];
 							if (np == null) {
-								SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "애러: NULL 플레이어 찾을수 없음");
+								SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "ì• ëŸ¬: NULL í”Œë ˆì´ì–´ ì°¾ì„ìˆ˜ ì—†ìŒ");
 							} else {
-								SendMessage.sendMessagePlayer(np, ChatColor.GOLD + "당신은 추적당하고 있습니다.");
+								SendMessage.sendMessagePlayer(np, ChatColor.GOLD + "ë‹¹ì‹ ì€ ì¶”ì ë‹¹í•˜ê³  ìžˆìŠµë‹ˆë‹¤.");
 								@SuppressWarnings("unused")
 								BukkitTask runnable = new BukkitRunnable() {
 									int tick = 0;
@@ -145,10 +145,10 @@ public class PlayerInteract implements Listener {
 										}
 										tick++;
 										if (left <= 0) {
-											im.setDisplayName(ChatColor.RED + "다쓴 나침판");
+											im.setDisplayName(ChatColor.RED + "ë‹¤ì“´ ë‚˜ì¹¨íŒ");
 											cancel();
 										} else if (!Sequence.getPlayerPlaying().contains(np)) {
-											im.setDisplayName(ChatColor.RED + "지목된 플레이어 찾을수 없음");
+											im.setDisplayName(ChatColor.RED + "ì§€ëª©ëœ í”Œë ˆì´ì–´ ì°¾ì„ìˆ˜ ì—†ìŒ");
 											cancel();
 										} else {
 											player.setCompassTarget(np.getLocation());
@@ -157,7 +157,7 @@ public class PlayerInteract implements Listener {
 											im.setDisplayName(String.valueOf(
 													Math.round(player.getLocation().distance(npLoc) * 10) / 10.0));
 											ArrayList<String> lores = new ArrayList<String>();
-											lores.add(ChatColor.GREEN + "남은시간 %s 초".replace("%s",
+											lores.add(ChatColor.GREEN + "ë‚¨ì€ì‹œê°„ %s ì´ˆ".replace("%s",
 													ChatColor.BLUE + String.valueOf(left) + ChatColor.GREEN));
 											im.setLore(lores);
 											if (tick == 0)
@@ -183,12 +183,12 @@ public class PlayerInteract implements Listener {
 		event.setCancelled(true);
 
 		if (GameStatus.getStatus() != GameStatus.RUNNING) {
-			SendMessage.sendMessagePlayer(player, "본 아이템은 게임중에만 이용하실수 있습니다.");
+			SendMessage.sendMessagePlayer(player, "ë³¸ ì•„ì´í…œì€ ê²Œìž„ì¤‘ì—ë§Œ ì´ìš©í•˜ì‹¤ìˆ˜ ìžˆìŠµë‹ˆë‹¤.");
 			return;
 		}
 
 		if (!Sequence.getPlayerPlaying().contains(player)) {
-			SendMessage.sendMessagePlayer(player, "본 아이템은 게임참가자만 이용하실수 있습니다.");
+			SendMessage.sendMessagePlayer(player, "ë³¸ ì•„ì´í…œì€ ê²Œìž„ì°¸ê°€ìžë§Œ ì´ìš©í•˜ì‹¤ìˆ˜ ìžˆìŠµë‹ˆë‹¤.");
 			return;
 		}
 
@@ -197,22 +197,22 @@ public class PlayerInteract implements Listener {
 			ArrayList<String> entry = new ArrayList<String>();
 			int playerRank = Sequence.getRank(player);
 
-			entry.add("당신의 이름은: " + player.getName());
-			entry.add("당신의 랭크는: " + playerRank);
+			entry.add("ë‹¹ì‹ ì˜ ì´ë¦„ì€: " + player.getName());
+			entry.add("ë‹¹ì‹ ì˜ ëž­í¬ëŠ”: " + playerRank);
 			entry.add("");
-			entry.add("다음으로 랭크 높은사람(들)");
+			entry.add("ë‹¤ìŒìœ¼ë¡œ ëž­í¬ ë†’ì€ì‚¬ëžŒ(ë“¤)");
 
 			if (playerRank <= 1) {
-				entry.add(ChatColor.GOLD + "당신이 넘버 1");
-				entry.add(ChatColor.DARK_RED + "이템 날린겨");
+				entry.add(ChatColor.GOLD + "ë‹¹ì‹ ì´ ë„˜ë²„ 1");
+				entry.add(ChatColor.DARK_RED + "ì´í…œ ë‚ ë¦°ê²¨");
 			} else {
 				Set<Player> NextPlayers = Sequence.getKeysByValue(Sequence.getRankList()[playerRank - 2]);
 				if (NextPlayers.isEmpty()) {
-					entry.add(ChatColor.RED + "없음");
+					entry.add(ChatColor.RED + "ì—†ìŒ");
 				} else {
 					for (Player p : NextPlayers) {
 						if (p == null) {
-							entry.add(ChatColor.RED + "애러");
+							entry.add(ChatColor.RED + "ì• ëŸ¬");
 							continue;
 						}
 						entry.add(p.getName());
@@ -226,22 +226,22 @@ public class PlayerInteract implements Listener {
 			ArrayList<String> entry = new ArrayList<String>();
 			int playerRank = Sequence.getRank(player);
 
-			entry.add("당신의 이름은: " + player.getName());
-			entry.add("당신의 랭크는: " + playerRank);
+			entry.add("ë‹¹ì‹ ì˜ ì´ë¦„ì€: " + player.getName());
+			entry.add("ë‹¹ì‹ ì˜ ëž­í¬ëŠ”: " + playerRank);
 			entry.add("");
-			entry.add("다음으로 랭크 낮은사람(들)");
+			entry.add("ë‹¤ìŒìœ¼ë¡œ ëž­í¬ ë‚®ì€ì‚¬ëžŒ(ë“¤)");
 
 			if (playerRank >= Sequence.getRankList().length) {
-				entry.add(ChatColor.GOLD + "당신이 꼴등");
-				entry.add(ChatColor.DARK_RED + "이템 날린겨");
+				entry.add(ChatColor.GOLD + "ë‹¹ì‹ ì´ ê¼´ë“±");
+				entry.add(ChatColor.DARK_RED + "ì´í…œ ë‚ ë¦°ê²¨");
 			} else {
 				Set<Player> NextPlayers = Sequence.getKeysByValue(Sequence.getRankList()[playerRank]);
 				if (NextPlayers.isEmpty()) {
-					entry.add(ChatColor.RED + "없음");
+					entry.add(ChatColor.RED + "ì—†ìŒ");
 				} else {
 					for (Player p : NextPlayers) {
 						if (p == null) {
-							entry.add(ChatColor.RED + "애러");
+							entry.add(ChatColor.RED + "ì• ëŸ¬");
 							continue;
 						}
 						entry.add(p.getName());
@@ -254,20 +254,20 @@ public class PlayerInteract implements Listener {
 			ArrayList<String> entry = new ArrayList<String>();
 			int playerRank = Sequence.getRank(player);
 
-			entry.add("당신의 이름은: " + player.getName());
-			entry.add("당신의 랭크는: " + playerRank);
+			entry.add("ë‹¹ì‹ ì˜ ì´ë¦„ì€: " + player.getName());
+			entry.add("ë‹¹ì‹ ì˜ ëž­í¬ëŠ”: " + playerRank);
 			entry.add("");
-			entry.add("모든 사람들의 랭크");
+			entry.add("ëª¨ë“  ì‚¬ëžŒë“¤ì˜ ëž­í¬");
 
 			for (int i = 0; i < Sequence.getRankList().length; i++) {
 				Set<Player> NextPlayers = Sequence.getKeysByValue(Sequence.getRankList()[i]);
 
 				if (NextPlayers.isEmpty()) {
-					entry.add(ChatColor.RESET + String.valueOf(i) + ". " + ChatColor.RED + "없음");
+					entry.add(ChatColor.RESET + String.valueOf(i) + ". " + ChatColor.RED + "ì—†ìŒ");
 				} else {
 					for (Player p : NextPlayers) {
 						if (p == null) {
-							entry.add(ChatColor.RESET + String.valueOf(i) + ". " + ChatColor.RED + "애러");
+							entry.add(ChatColor.RESET + String.valueOf(i) + ". " + ChatColor.RED + "ì• ëŸ¬");
 							continue;
 						}
 						entry.add(ChatColor.RESET + String.valueOf(i) + ". " + p.getName());
@@ -281,7 +281,7 @@ public class PlayerInteract implements Listener {
 		} else if (item.equals(SpecialItems.FIRST_AID.get())) {
 			if (healCool.containsKey(player)) {
 				SendMessage.sendMessagePlayer(player,
-						ChatColor.YELLOW + String.valueOf(healCool.get(player)) + ChatColor.GOLD + "초 뒤에 이용 가능.");
+						ChatColor.YELLOW + String.valueOf(healCool.get(player)) + ChatColor.GOLD + "ì´ˆ ë’¤ì— ì´ìš© ê°€ëŠ¥.");
 				return;
 			}
 			healCool.put(player, 6);
@@ -289,13 +289,13 @@ public class PlayerInteract implements Listener {
 				player.setHealth(20);
 			else
 				player.setHealth(player.getHealth() + 8);
-			SendMessage.sendMessagePlayer(player, "당신은 4 하트 만큼 치료받으셨습니다.");
+			SendMessage.sendMessagePlayer(player, "ë‹¹ì‹ ì€ 4 í•˜íŠ¸ ë§Œí¼ ì¹˜ë£Œë°›ìœ¼ì…¨ìŠµë‹ˆë‹¤.");
 			removeItem(event);
 
 		} else if (item.equals(SpecialItems.BANDAGE.get())) {
 			if (healCool.containsKey(player)) {
 				SendMessage.sendMessagePlayer(player,
-						ChatColor.YELLOW + String.valueOf(healCool.get(player)) + ChatColor.GOLD + "초 뒤에 이용 가능.");
+						ChatColor.YELLOW + String.valueOf(healCool.get(player)) + ChatColor.GOLD + "ì´ˆ ë’¤ì— ì´ìš© ê°€ëŠ¥.");
 				return;
 			}
 			healCool.put(player, 3);
@@ -303,14 +303,14 @@ public class PlayerInteract implements Listener {
 				player.setHealth(20);
 			else
 				player.setHealth(player.getHealth() + 3);
-			SendMessage.sendMessagePlayer(player, "당신은 1.5 하트 만큼 치료받으셨습니다.");
+			SendMessage.sendMessagePlayer(player, "ë‹¹ì‹ ì€ 1.5 í•˜íŠ¸ ë§Œí¼ ì¹˜ë£Œë°›ìœ¼ì…¨ìŠµë‹ˆë‹¤.");
 			removeItem(event);
 
 		} else if (item.equals(SpecialItems.EARN_SECONDS.get())) {
 			HashMap<Player, Integer> pTimes = Sequence.getPlayerTime();
 			pTimes.put(player, (int) (pTimes.get(player) + GameSettings.EARN_SECOUNDS_TIME.value()));
 			SendMessage.sendMessagePlayer(player,
-					String.valueOf(GameSettings.EARN_SECOUNDS_TIME.value()) + "초를 받으셨습니다.");
+					String.valueOf(GameSettings.EARN_SECOUNDS_TIME.value()) + "ì´ˆë¥¼ ë°›ìœ¼ì…¨ìŠµë‹ˆë‹¤.");
 			player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1, 1);
 			removeItem(event);
 
@@ -320,7 +320,7 @@ public class PlayerInteract implements Listener {
 					false);
 
 			SendMessage.sendMessagePlayer(player,
-					String.valueOf(GameSettings.IS_INVISIBILITY.value()) + "초동안 투명해집니다.");
+					String.valueOf(GameSettings.IS_INVISIBILITY.value()) + "ì´ˆë™ì•ˆ íˆ¬ëª…í•´ì§‘ë‹ˆë‹¤.");
 			removeItem(event);
 		}
 	}

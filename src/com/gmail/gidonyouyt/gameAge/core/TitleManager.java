@@ -1,4 +1,4 @@
-package com.gmail.gidonyouyt.gameAge.core;
+﻿package com.gmail.gidonyouyt.gameAge.core;
 
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
@@ -58,7 +58,7 @@ public class TitleManager {
 
 		String json = "{\"text\":\"" + text + "\",\"color\":\"" + color
 				+ "\",\"clickEvent\":{\"action\":\"open_url\",\"value\":\"" + link
-				+ "\"},\"hoverEvent\":{\"action\":\"show_text\",\"value\":{\"text\":\"\",\"extra\":[{\"text\":\"í´ë¦­í•˜ì—¬ ì—´ê¸°\",\"color\":\"gold\"}]}}}";
+				+ "\"},\"hoverEvent\":{\"action\":\"show_text\",\"value\":{\"text\":\"\",\"extra\":[{\"text\":\"Ã­ÂÂ´Ã«Â¦Â­Ã­â€¢ËœÃ¬â€”Â¬ Ã¬â€”Â´ÃªÂ¸Â°\",\"color\":\"gold\"}]}}}";
 
 		sendClickableText(player, json);
 	}
@@ -67,19 +67,19 @@ public class TitleManager {
 
 		String json = "{\"text\":\"" + text + "\",\"color\":\"" + color
 				+ "\",\"clickEvent\":{\"action\":\"open_url\",\"value\":\"" + link
-				+ "\"},\"hoverEvent\":{\"action\":\"show_text\",\"value\":{\"text\":\"\",\"extra\":[{\"text\":\"í´ë¦­í•˜ì—¬ ì—´ê¸°\",\"color\":\"gold\"}]}}}";
+				+ "\"},\"hoverEvent\":{\"action\":\"show_text\",\"value\":{\"text\":\"\",\"extra\":[{\"text\":\"Ã­ÂÂ´Ã«Â¦Â­Ã­â€¢ËœÃ¬â€”Â¬ Ã¬â€”Â´ÃªÂ¸Â°\",\"color\":\"gold\"}]}}}";
 		for (Player player : Bukkit.getOnlinePlayers())
 			sendClickableText(player, json);
 	}
 
 	public static void countDown(Player player, int i) {
 		if (i > 0)
-			displayTitle(player, i + " ì´ˆ ë’¤ì— ê²Œìž„ì´ ì‹œìž‘ë©ë‹ˆë‹¤", "green", "ì¤€ë¹„í•˜ì„¸ìš”!", "orange");
+			displayTitle(player, i + " Ã¬Â´Ë† Ã«â€™Â¤Ã¬â€”Â ÃªÂ²Å’Ã¬Å¾â€žÃ¬ÂÂ´ Ã¬â€¹Å“Ã¬Å¾â€˜Ã«ÂÂ©Ã«â€¹Ë†Ã«â€¹Â¤", "green", "Ã¬Â¤â‚¬Ã«Â¹â€žÃ­â€¢ËœÃ¬â€žÂ¸Ã¬Å¡â€!", "orange");
 		else if (i == 0)
 			displayTitle(player, "Game START!", "blue", null, null);
 
 		else
-			displayTitle(player, "ì˜¤ë¥˜ ë°œìƒ", "red", "ê°œë°œìž: ì´ê±´ ì˜ˆì¸¡í•˜ì§€ ëª»í–ˆì–´", "dark_red");
+			displayTitle(player, "Ã¬ËœÂ¤Ã«Â¥Ëœ Ã«Â°Å“Ã¬Æ’Â", "red", "ÃªÂ°Å“Ã«Â°Å“Ã¬Å¾Â: Ã¬ÂÂ´ÃªÂ±Â´ Ã¬ËœË†Ã¬Â¸Â¡Ã­â€¢ËœÃ¬Â§â‚¬ Ã«ÂªÂ»Ã­â€“Ë†Ã¬â€“Â´", "dark_red");
 
 	}
 

@@ -1,4 +1,4 @@
-package com.gmail.gidonyouyt.gameAge.events;
+﻿package com.gmail.gidonyouyt.gameAge.events;
 
 import java.util.HashMap;
 
@@ -36,23 +36,23 @@ public class BlockBreak implements Listener {
 			if (GameSettings.ALLOW_BREAK_SPLATE.value() == 1) {
 				Block block = event.getBlock();
 				if (block.getType() == Material.STONE_PLATE) {
-					SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "게임중에는 압력판을 부술때마다 반피씩 깎입니다.");
-					SendMessage.logConsole("강압판 부서짐  " + block.getLocation());
+					SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "ê²Œìž„ì¤‘ì—ëŠ” ì••ë ¥íŒì„ ë¶€ìˆ ë•Œë§ˆë‹¤ ë°˜í”¼ì”© ê¹Žìž…ë‹ˆë‹¤.");
+					SendMessage.logConsole("ê°•ì••íŒ ë¶€ì„œì§  " + block.getLocation());
 					blockDB.put(block, (int) GameSettings.TIME_RECOVER_SPLATE.value());
 					player.damage(1);
 					player.getWorld().strikeLightningEffect(block.getLocation());
 					return;
 				}
-				SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "게임중에는 압력판 외에 블럭을 부술수 없습니다.");
+				SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "ê²Œìž„ì¤‘ì—ëŠ” ì••ë ¥íŒ ì™¸ì— ë¸”ëŸ­ì„ ë¶€ìˆ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 				event.setCancelled(true);
 				return;
 			}
-			SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "게임중에는 블럭을 부술수 없습니다.");
+			SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "ê²Œìž„ì¤‘ì—ëŠ” ë¸”ëŸ­ì„ ë¶€ìˆ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 			event.setCancelled(true);
 
 			// // Advanced Gameplay
-			// SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "게임중에는 블럭을 부술때마다
-			// 반피씩 깎입니다.");
+			// SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "ê²Œìž„ì¤‘ì—ëŠ” ë¸”ëŸ­ì„ ë¶€ìˆ ë•Œë§ˆë‹¤
+			// ë°˜í”¼ì”© ê¹Žìž…ë‹ˆë‹¤.");
 			// blockDB.add(event.getBlock());
 		}
 	}
@@ -74,7 +74,7 @@ public class BlockBreak implements Listener {
 			Entity block = event.getEntity();
 			if (block instanceof ItemFrame || block instanceof Painting) {
 				event.setCancelled(true);
-				SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "게임중에는 블럭을 부술수 없습니다.");
+				SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "ê²Œìž„ì¤‘ì—ëŠ” ë¸”ëŸ­ì„ ë¶€ìˆ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 			}
 		}
 		event.setCancelled(true);
@@ -97,7 +97,7 @@ public class BlockBreak implements Listener {
 				return;
 
 			event.setCancelled(true);
-			SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "게임중에는 블럭을 부술수 없습니다.");
+			SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "ê²Œìž„ì¤‘ì—ëŠ” ë¸”ëŸ­ì„ ë¶€ìˆ ìˆ˜ ì—†ìŠµë‹ˆë‹¤.");
 
 		} else
 			event.setCancelled(true);
@@ -106,12 +106,12 @@ public class BlockBreak implements Listener {
 	public static void recoverAll() {
 		for (Block b : blockDB.keySet()) {
 			b.getLocation().getBlock().setType(Material.STONE_PLATE);
-			SendMessage.logConsole("클린: 강압판 복구 성공  " + b.getLocation());
+			SendMessage.logConsole("í´ë¦°: ê°•ì••íŒ ë³µêµ¬ ì„±ê³µ  " + b.getLocation());
 			blockDB.remove(b);
 		}
 
 		if (!blockDB.isEmpty())
-			SendMessage.broadcastMessage(ChatColor.DARK_RED + "중요 애러: 압력판 복구 실패");
+			SendMessage.broadcastMessage(ChatColor.DARK_RED + "ì¤‘ìš” ì• ëŸ¬: ì••ë ¥íŒ ë³µêµ¬ ì‹¤íŒ¨");
 	}
 
 	public static void autoRecover() {
@@ -121,7 +121,7 @@ public class BlockBreak implements Listener {
 			int timeLeft = blockDB.get(b);
 			if (timeLeft <= 1) {
 				b.getLocation().getBlock().setType(Material.STONE_PLATE);
-				SendMessage.logConsole("강압판 복구 성공  " + b.getLocation());
+				SendMessage.logConsole("ê°•ì••íŒ ë³µêµ¬ ì„±ê³µ  " + b.getLocation());
 				blockDB.remove(b);
 			} else {
 				timeLeft--;

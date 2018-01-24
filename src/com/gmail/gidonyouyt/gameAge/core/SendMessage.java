@@ -1,4 +1,4 @@
-package com.gmail.gidonyouyt.gameAge.core;
+﻿package com.gmail.gidonyouyt.gameAge.core;
 
 import java.util.logging.Logger;
 
@@ -38,27 +38,27 @@ public class SendMessage extends JavaPlugin {
 
 	public static void sendCreditInfo() {
 		Bukkit.broadcastMessage("");
-		Bukkit.broadcastMessage(ChatColor.BLUE + "" + ChatColor.BOLD + "  ====  플러그인 정보  ====  ");
-		Bukkit.broadcastMessage("게임 이름: " + name);
-		Bukkit.broadcastMessage("게임 버전: " + version);
-		Bukkit.broadcastMessage("개발자: gidonyou");
-		Bukkit.broadcastMessage("블로그: https://blog.naver.com/gidonyou");
-		Bukkit.broadcastMessage("유튜브: https://www.youtube.com/gidonyou");
+		Bukkit.broadcastMessage(ChatColor.BLUE + "" + ChatColor.BOLD + "  ====  í”ŒëŸ¬ê·¸ì¸ ì •ë³´  ====  ");
+		Bukkit.broadcastMessage("ê²Œìž„ ì´ë¦„: " + name);
+		Bukkit.broadcastMessage("ê²Œìž„ ë²„ì „: " + version);
+		Bukkit.broadcastMessage("ê°œë°œìž: gidonyou");
+		Bukkit.broadcastMessage("ë¸”ë¡œê·¸: https://blog.naver.com/gidonyou");
+		Bukkit.broadcastMessage("ìœ íŠœë¸Œ: https://www.youtube.com/gidonyou");
 		Bukkit.broadcastMessage("");
 	}
 
 	public static void specialThanks() {
 		Bukkit.broadcastMessage("");
-		Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "[  도움을 주신분  ]");
-		TitleManager.sendClickableText(ChatColor.GOLD + "[v1.1.0 실험쥐 협찬] " + ChatColor.RESET + "디스코드 조합대 (클릭)",
+		Bukkit.broadcastMessage(ChatColor.LIGHT_PURPLE + "[  ë„ì›€ì„ ì£¼ì‹ ë¶„  ]");
+		TitleManager.sendClickableText(ChatColor.GOLD + "[v1.1.0 ì‹¤í—˜ì¥ í˜‘ì°¬] " + ChatColor.RESET + "ë””ìŠ¤ì½”ë“œ ì¡°í•©ëŒ€ (í´ë¦­)",
 				"https://discord.gg/mpNKx4Q", "none");
 		Bukkit.broadcastMessage(
-				ChatColor.YELLOW + "NF3charcoaL --> " + ChatColor.RESET + "각종 문법 오류와 컨텐츠 밸런스 수정을 도와주셨습니다.");
+				ChatColor.YELLOW + "NF3charcoaL --> " + ChatColor.RESET + "ê°ì¢… ë¬¸ë²• ì˜¤ë¥˜ì™€ ì»¨í…ì¸  ë°¸ëŸ°ìŠ¤ ìˆ˜ì •ì„ ë„ì™€ì£¼ì…¨ìŠµë‹ˆë‹¤.");
 		Bukkit.broadcastMessage(
-				ChatColor.YELLOW + "[v1.1.0 테스터] " + ChatColor.RESET + "(초대) NF3charcoaL, J_arvi_S, 퓨리, 심심하면 밥묵자");
-		Bukkit.broadcastMessage(ChatColor.YELLOW + "[v1.1.0 테스터] " + ChatColor.GRAY + "(참여) ");
+				ChatColor.YELLOW + "[v1.1.0 í…ŒìŠ¤í„°] " + ChatColor.RESET + "(ì´ˆëŒ€) NF3charcoaL, J_arvi_S, í“¨ë¦¬, ì‹¬ì‹¬í•˜ë©´ ë°¥ë¬µìž");
+		Bukkit.broadcastMessage(ChatColor.YELLOW + "[v1.1.0 í…ŒìŠ¤í„°] " + ChatColor.GRAY + "(ì°¸ì—¬) ");
 		Bukkit.broadcastMessage(
-				ChatColor.YELLOW + "[Beta3 테스터] " + ChatColor.RESET + "NF3charcoaL, J_arvi_S, TF2_ValS ");
+				ChatColor.YELLOW + "[Beta3 í…ŒìŠ¤í„°] " + ChatColor.RESET + "NF3charcoaL, J_arvi_S, TF2_ValS ");
 		Bukkit.broadcastMessage("");
 	}
 }

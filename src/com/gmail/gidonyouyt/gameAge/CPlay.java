@@ -1,4 +1,4 @@
-package com.gmail.gidonyouyt.gameAge;
+﻿package com.gmail.gidonyouyt.gameAge;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -54,7 +54,7 @@ public class CPlay implements CommandExecutor {
 			String arg = arg3[0];
 			if (arg.equalsIgnoreCase("g")) {
 				if (!player.isOp()) {
-					player.sendMessage(ChatColor.DARK_RED + "OP 만 이용할 수 있는 명령어입니다.");
+					player.sendMessage(ChatColor.DARK_RED + "OP ë§Œ ì´ìš©í•  ìˆ˜ ìžˆëŠ” ëª…ë ¹ì–´ìž…ë‹ˆë‹¤.");
 					return true;
 				}
 				PlayerInventory inv = player.getInventory();
@@ -68,10 +68,10 @@ public class CPlay implements CommandExecutor {
 
 			} else if (arg3[0].equalsIgnoreCase("r")) {
 				if (!player.isOp()) {
-					player.sendMessage(ChatColor.DARK_RED + "OP 만 이용할 수 있는 명령어입니다.");
+					player.sendMessage(ChatColor.DARK_RED + "OP ë§Œ ì´ìš©í•  ìˆ˜ ìžˆëŠ” ëª…ë ¹ì–´ìž…ë‹ˆë‹¤.");
 					return true;
 				}
-				sender.sendMessage("상자 다시배분: " + ItemDistribute.DistributeItems());
+				sender.sendMessage("ìƒìž ë‹¤ì‹œë°°ë¶„: " + ItemDistribute.DistributeItems());
 				return true;
 				// }else if (arg3[0].equalsIgnoreCase("d")){
 				// ItemDistribute.clearAllBlock();
@@ -79,7 +79,7 @@ public class CPlay implements CommandExecutor {
 
 			} else if (arg.equalsIgnoreCase("i")) {
 				if (!player.isOp()) {
-					player.sendMessage(ChatColor.DARK_RED + "OP 만 이용할 수 있는 명령어입니다.");
+					player.sendMessage(ChatColor.DARK_RED + "OP ë§Œ ì´ìš©í•  ìˆ˜ ìžˆëŠ” ëª…ë ¹ì–´ìž…ë‹ˆë‹¤.");
 					return true;
 				}
 				if (arg3.length != 2) {
@@ -89,7 +89,7 @@ public class CPlay implements CommandExecutor {
 				}
 				Player target = Bukkit.getPlayer(arg3[1]);
 				if (target == null) {
-					SendMessage.sendMessagePlayer(player, "플레이어 찾을수 없음");
+					SendMessage.sendMessagePlayer(player, "í”Œë ˆì´ì–´ ì°¾ì„ìˆ˜ ì—†ìŒ");
 					return true;
 
 				}
@@ -99,10 +99,10 @@ public class CPlay implements CommandExecutor {
 
 			} else if (arg3[0].equalsIgnoreCase("b")) {
 				if (!player.isOp()) {
-					player.sendMessage(ChatColor.DARK_RED + "OP 만 이용할 수 있는 명령어입니다.");
+					player.sendMessage(ChatColor.DARK_RED + "OP ë§Œ ì´ìš©í•  ìˆ˜ ìžˆëŠ” ëª…ë ¹ì–´ìž…ë‹ˆë‹¤.");
 					return true;
 				}
-				BookManager.openBook(BookManager.book("", "", "테스트 책"), player);
+				BookManager.openBook(BookManager.book("", "", "í…ŒìŠ¤íŠ¸ ì±…"), player);
 				return true;
 			} else if (arg3[0].equalsIgnoreCase("c")) {
 				HashMap<String, Integer> result = new HashMap<String, Integer>();
@@ -111,10 +111,10 @@ public class CPlay implements CommandExecutor {
 				for (Location loc : locations) {
 					Block block = loc.getBlock();
 					if (block instanceof ShulkerBox) {
-						result.put("애러발생", 33);
+						result.put("ì• ëŸ¬ë°œìƒ", 33);
 					}
 					Inventory inv = ((ShulkerBox) block.getState()).getInventory();
-					String name = "[없음]";
+					String name = "[ì—†ìŒ]";
 					if (inv.getItem(13) != null)
 						name = inv.getItem(13).getItemMeta().getDisplayName();
 					if (!result.containsKey(name))
@@ -145,7 +145,7 @@ public class CPlay implements CommandExecutor {
 				return true;
 			} else if (arg3[0].equalsIgnoreCase("f")) {
 				if (!player.isOp()) {
-					player.sendMessage(ChatColor.DARK_RED + "OP 만 이용할 수 있는 명령어입니다.");
+					player.sendMessage(ChatColor.DARK_RED + "OP ë§Œ ì´ìš©í•  ìˆ˜ ìžˆëŠ” ëª…ë ¹ì–´ìž…ë‹ˆë‹¤.");
 					return true;
 				}
 				SendMessage.sendMessagePlayer(player, "-- Force Limit border --");
@@ -157,12 +157,12 @@ public class CPlay implements CommandExecutor {
 
 					if (NextPlayers.isEmpty()) {
 						SendMessage.sendMessagePlayer(player,
-								ChatColor.RESET + String.valueOf(i) + ". " + ChatColor.RED + "없음");
+								ChatColor.RESET + String.valueOf(i) + ". " + ChatColor.RED + "ì—†ìŒ");
 					} else {
 						for (Player p : NextPlayers) {
 							if (p == null) {
 								SendMessage.sendMessagePlayer(player,
-										ChatColor.RESET + String.valueOf(i) + ". " + ChatColor.RED + "애러");
+										ChatColor.RESET + String.valueOf(i) + ". " + ChatColor.RED + "ì• ëŸ¬");
 								continue;
 							}
 							SendMessage.sendMessagePlayer(player,
@@ -174,24 +174,24 @@ public class CPlay implements CommandExecutor {
 				}
 				return true;
 			} else if (arg3[0].equalsIgnoreCase("s")) {
-				SendMessage.sendMessagePlayer(player, "===== 게임 설정 =====");
+				SendMessage.sendMessagePlayer(player, "===== ê²Œìž„ ì„¤ì • =====");
 				for (GameSettings settings : GameSettings.values())
 					SendMessage.sendMessagePlayer(player, settings.desc() + " - " + settings.value());
 				return true;
 
 			} else if (arg3[0].equalsIgnoreCase("rl")) {
 				if (!player.isOp()) {
-					player.sendMessage(ChatColor.DARK_RED + "OP 만 이용할 수 있는 명령어입니다.");
+					player.sendMessage(ChatColor.DARK_RED + "OP ë§Œ ì´ìš©í•  ìˆ˜ ìžˆëŠ” ëª…ë ¹ì–´ìž…ë‹ˆë‹¤.");
 					return true;
 				}
 				plugin.yml.loadConfiguration();
-				player.sendMessage(ChatColor.GREEN + "설정 파일을 다시 불러왔습니다.");
+				player.sendMessage(ChatColor.GREEN + "ì„¤ì • íŒŒì¼ì„ ë‹¤ì‹œ ë¶ˆëŸ¬ì™”ìŠµë‹ˆë‹¤.");
 
 				return true;
 
 			} else if (arg3[0].equalsIgnoreCase("u")) {
 				if (!player.isOp()) {
-					player.sendMessage(ChatColor.DARK_RED + "OP 만 이용할 수 있는 명령어입니다.");
+					player.sendMessage(ChatColor.DARK_RED + "OP ë§Œ ì´ìš©í•  ìˆ˜ ìžˆëŠ” ëª…ë ¹ì–´ìž…ë‹ˆë‹¤.");
 					return true;
 				}
 				if (arg3.length >= 2) {
@@ -204,18 +204,18 @@ public class CPlay implements CommandExecutor {
 							try {
 								double d = Double.valueOf(arg3[2]);
 								plugin.yml.updateSetting(setting, d);
-								SendMessage.sendMessagePlayer(player, ChatColor.GREEN + "설정 업데이트 성공");
+								SendMessage.sendMessagePlayer(player, ChatColor.GREEN + "ì„¤ì • ì—…ë°ì´íŠ¸ ì„±ê³µ");
 							} catch (NumberFormatException e) {
-								SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "잘못된 숫자 입력");
+								SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "ìž˜ëª»ëœ ìˆ«ìž ìž…ë ¥");
 							}
 						}
 
 						return true;
 					} catch (IllegalArgumentException e) {
-						SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "해당되는 설정 찾을수 없음");
+						SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "í•´ë‹¹ë˜ëŠ” ì„¤ì • ì°¾ì„ìˆ˜ ì—†ìŒ");
 
 					} catch (Exception e) {
-						SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "게임 설정 업데이트중 오류 발생");
+						SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "ê²Œìž„ ì„¤ì • ì—…ë°ì´íŠ¸ì¤‘ ì˜¤ë¥˜ ë°œìƒ");
 						e.printStackTrace();
 					}
 				}
@@ -223,19 +223,19 @@ public class CPlay implements CommandExecutor {
 				for (GameSettings settings : GameSettings.values()) {
 					list.add(settings.name());
 				}
-				SendMessage.sendMessagePlayer(player, "잘못된 이용방식: /play u [설정 이름] [숫자]");
+				SendMessage.sendMessagePlayer(player, "ìž˜ëª»ëœ ì´ìš©ë°©ì‹: /play u [ì„¤ì • ì´ë¦„] [ìˆ«ìž]");
 				SendMessage.sendMessagePlayer(player, String.join(", ", list));
 				return true;
 			}
 		}
-		SendMessage.sendMessagePlayer(player, ChatColor.RED + "알수없는 커멘드");
+		SendMessage.sendMessagePlayer(player, ChatColor.RED + "ì•Œìˆ˜ì—†ëŠ” ì»¤ë©˜ë“œ");
 		return false;
 	}
 
 	private void help(Player player) {
 		// TODO Auto-generated method stub
-		SendMessage.sendMessagePlayer(player, "가능한 커맨드 -- 개발 전용");
-		SendMessage.sendMessagePlayer(player, "* - OP 전용");
+		SendMessage.sendMessagePlayer(player, "ê°€ëŠ¥í•œ ì»¤ë§¨ë“œ -- ê°œë°œ ì „ìš©");
+		SendMessage.sendMessagePlayer(player, "* - OP ì „ìš©");
 		SendMessage.sendMessagePlayer(player, "");
 		SendMessage.sendMessagePlayer(player, "g* - Get All Items");
 		SendMessage.sendMessagePlayer(player, "r* - Re Dispute Items");

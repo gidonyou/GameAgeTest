@@ -1,4 +1,4 @@
-package com.gmail.gidonyouyt.gameAge.events;
+﻿package com.gmail.gidonyouyt.gameAge.events;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,7 +13,7 @@ public class PlayerPreLogin implements Listener {
 	public void onPlayerPreLogin (AsyncPlayerPreLoginEvent event) {
 		if (GameStatus.getStatus() != GameStatus.RUNNING)
 			return;
-		event.disallow(Result.KICK_OTHER, "게임이 진행중입니다.");		
+		event.disallow(Result.KICK_OTHER, "ê²Œìž„ì´ ì§„í–‰ì¤‘ìž…ë‹ˆë‹¤.");		
 	}
 
 }

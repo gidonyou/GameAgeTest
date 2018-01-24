@@ -1,4 +1,4 @@
-package com.gmail.gidonyouyt.gameAge.events;
+﻿package com.gmail.gidonyouyt.gameAge.events;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -13,7 +13,7 @@ public class PlayerLeave implements Listener {
 	public void onPlayerQuit(PlayerQuitEvent event) {
 		if (GameStatus.getStatus() != GameStatus.RUNNING)
 			return;
-		event.setQuitMessage(event.getPlayer().getName() + "ë‹˜ì´ ë„ì£¼í•˜ì…¨ìŠµë‹ˆë‹¤.");
+		event.setQuitMessage(event.getPlayer().getName() + "Ã«â€¹ËœÃ¬ÂÂ´ Ã«Ââ€žÃ¬Â£Â¼Ã­â€¢ËœÃ¬â€¦Â¨Ã¬Å ÂµÃ«â€¹Ë†Ã«â€¹Â¤.");
 		
 		Sequence.out(event.getPlayer());
 		

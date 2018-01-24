@@ -1,4 +1,4 @@
-package com.gmail.gidonyouyt.gameAge;
+﻿package com.gmail.gidonyouyt.gameAge;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -10,37 +10,37 @@ import net.md_5.bungee.api.ChatColor;
 
 public enum GameSettings {
 
-	GAME_TIME("게임 진행 시간 (분)", 0),// Minutes
-	COUNTDOWN_TIME("게임 카운트 다운 시간 (초)", 5),
-	MERCY_TIME("초기 버프 시간 (초)", 15), // Seconds
-	MIN_LIFE("최소 수명 시간 (분)", 6), // Minute
-	MAX_LIFE("최고 수명 시간 (분)", 12), // Minute
-	STEAL_TIME_SEC("뺏을수 있는 시간 (초)", 30), // Seconds
-	STEAL_IMMUNE_TIME_SEC("뻿는것 보호받는 시간 (초)", 45), // Seconds
-	EARN_SECOUNDS_TIME("시간 추가 아이템 시간 (초)", 20), // Seconds
-	AUTO_BORDER("자동 게임구역 제한 (분) [0 - disable]", 3), // Time in Minute -- 0 none;
-	COMPASS_DURABILITY("나침판 작동시간 (초)", 30),
-	FORCE_DAMAGE_DISTANCE("강제 데미지 거리", 60),
-	FORCE_DAMAGE_TIME("강제 데미지 경고 시간 (초)", 20),
-	NUM_CHEST("아이템 상자 갯수", 70), // Number
-	MAX_CHEST_FAIL("상자 설치시 최대 실패 갯수", 1000000),
-	AUTO_REGEN("게임중 자동 회복 (B)", 0), // Boolean 0/1
-	SMART_DISTRIBUTE("확률지정 배분 (B)", 1), // 0/1
-	MAP_LENGTH("맵 크기", 240), // Blocks
-	MINY("최소 Y", 4), // Blocks
-	MAXY("최대 Y", 64), // Blocks
-	ALLOW_BREAK_SPLATE("돌 압력판을 제거할수 있게 해줍니다. (B)", 1),
-	TIME_RECOVER_SPLATE("돌 압력판 복구시간 (초) [-1 : disable]", 15),
-	ADD_NULL_PLAYER("외톨이 기돈유를 위한 NULL 플레이어 (B)", 0),
-	FIRST_LAST_DAMAGE_MULT("1등이 꼴등을 공격할시 데미지 곱하기 [-1 : disable]", 1.5),
-	WEBPAGE_ON("웹페이지 UI 활성화 (B) [실행시 주의: 배타이므로 애러 가능]", 0),
-	WEBPAGE_PORT("웹페이지 UI 포트번호", 8000),
-	WEBPAGE_BLANK("웹페이지 초반 감춤 시간 (초) [아직 미적용]", 0),
-	WEBPAGE_DEBUG("웹페이지 개발용 테스트/디버그 (B)", 0),
-	DEV_CREDIT("개발진대해 광고해줍니다 [0/1/2] - 미작동", 0),
-	BROADCAST_CONFIG("게임 시작시 설정을 OP 에게 알려줍니다 (B)", 0),
+	GAME_TIME("ê²Œìž„ ì§„í–‰ ì‹œê°„ (ë¶„)", 0),// Minutes
+	COUNTDOWN_TIME("ê²Œìž„ ì¹´ìš´íŠ¸ ë‹¤ìš´ ì‹œê°„ (ì´ˆ)", 5),
+	MERCY_TIME("ì´ˆê¸° ë²„í”„ ì‹œê°„ (ì´ˆ)", 15), // Seconds
+	MIN_LIFE("ìµœì†Œ ìˆ˜ëª… ì‹œê°„ (ë¶„)", 6), // Minute
+	MAX_LIFE("ìµœê³  ìˆ˜ëª… ì‹œê°„ (ë¶„)", 12), // Minute
+	STEAL_TIME_SEC("ëºì„ìˆ˜ ìžˆëŠ” ì‹œê°„ (ì´ˆ)", 30), // Seconds
+	STEAL_IMMUNE_TIME_SEC("ë»¿ëŠ”ê²ƒ ë³´í˜¸ë°›ëŠ” ì‹œê°„ (ì´ˆ)", 45), // Seconds
+	EARN_SECOUNDS_TIME("ì‹œê°„ ì¶”ê°€ ì•„ì´í…œ ì‹œê°„ (ì´ˆ)", 20), // Seconds
+	AUTO_BORDER("ìžë™ ê²Œìž„êµ¬ì—­ ì œí•œ (ë¶„) [0 - disable]", 3), // Time in Minute -- 0 none;
+	COMPASS_DURABILITY("ë‚˜ì¹¨íŒ ìž‘ë™ì‹œê°„ (ì´ˆ)", 30),
+	FORCE_DAMAGE_DISTANCE("ê°•ì œ ë°ë¯¸ì§€ ê±°ë¦¬", 60),
+	FORCE_DAMAGE_TIME("ê°•ì œ ë°ë¯¸ì§€ ê²½ê³  ì‹œê°„ (ì´ˆ)", 20),
+	NUM_CHEST("ì•„ì´í…œ ìƒìž ê°¯ìˆ˜", 70), // Number
+	MAX_CHEST_FAIL("ìƒìž ì„¤ì¹˜ì‹œ ìµœëŒ€ ì‹¤íŒ¨ ê°¯ìˆ˜", 1000000),
+	AUTO_REGEN("ê²Œìž„ì¤‘ ìžë™ íšŒë³µ (B)", 0), // Boolean 0/1
+	SMART_DISTRIBUTE("í™•ë¥ ì§€ì • ë°°ë¶„ (B)", 1), // 0/1
+	MAP_LENGTH("ë§µ í¬ê¸°", 240), // Blocks
+	MINY("ìµœì†Œ Y", 4), // Blocks
+	MAXY("ìµœëŒ€ Y", 64), // Blocks
+	ALLOW_BREAK_SPLATE("ëŒ ì••ë ¥íŒì„ ì œê±°í• ìˆ˜ ìžˆê²Œ í•´ì¤ë‹ˆë‹¤. (B)", 1),
+	TIME_RECOVER_SPLATE("ëŒ ì••ë ¥íŒ ë³µêµ¬ì‹œê°„ (ì´ˆ) [-1 : disable]", 15),
+	ADD_NULL_PLAYER("ì™¸í†¨ì´ ê¸°ëˆìœ ë¥¼ ìœ„í•œ NULL í”Œë ˆì´ì–´ (B)", 0),
+	FIRST_LAST_DAMAGE_MULT("1ë“±ì´ ê¼´ë“±ì„ ê³µê²©í• ì‹œ ë°ë¯¸ì§€ ê³±í•˜ê¸° [-1 : disable]", 1.5),
+	WEBPAGE_ON("ì›¹íŽ˜ì´ì§€ UI í™œì„±í™” (B) [ì‹¤í–‰ì‹œ ì£¼ì˜: ë°°íƒ€ì´ë¯€ë¡œ ì• ëŸ¬ ê°€ëŠ¥]", 0),
+	WEBPAGE_PORT("ì›¹íŽ˜ì´ì§€ UI í¬íŠ¸ë²ˆí˜¸", 8000),
+	WEBPAGE_BLANK("ì›¹íŽ˜ì´ì§€ ì´ˆë°˜ ê°ì¶¤ ì‹œê°„ (ì´ˆ) [ì•„ì§ ë¯¸ì ìš©]", 0),
+	WEBPAGE_DEBUG("ì›¹íŽ˜ì´ì§€ ê°œë°œìš© í…ŒìŠ¤íŠ¸/ë””ë²„ê·¸ (B)", 0),
+	DEV_CREDIT("ê°œë°œì§„ëŒ€í•´ ê´‘ê³ í•´ì¤ë‹ˆë‹¤ [0/1/2] - ë¯¸ìž‘ë™", 0),
+	BROADCAST_CONFIG("ê²Œìž„ ì‹œìž‘ì‹œ ì„¤ì •ì„ OP ì—ê²Œ ì•Œë ¤ì¤ë‹ˆë‹¤ (B)", 0),
 
-	IS_INVISIBILITY("아이템 투명화 시계 지속시간 (초)", 10);
+	IS_INVISIBILITY("ì•„ì´í…œ íˆ¬ëª…í™” ì‹œê³„ ì§€ì†ì‹œê°„ (ì´ˆ)", 10);
 
 	public static final World world = Bukkit.getWorld("World");
 	public static final Location centerLoc = world.getSpawnLocation();
@@ -79,32 +79,32 @@ public enum GameSettings {
 
 	public static void broadcastSettingToOp() {
 		SendMessage.sendMessageOP("");
-		SendMessage.sendMessageOP("===== 게임 설정 =====");
+		SendMessage.sendMessageOP("===== ê²Œìž„ ì„¤ì • =====");
 		for (GameSettings settings : GameSettings.values()) {
 			SendMessage.sendMessageOP(settings.desc + " - " + settings.value());
 		}
 	}
 
 	public static void gameInfo() {
-		// 게임 설명
+		// ê²Œìž„ ì„¤ëª…
 		Bukkit.broadcastMessage("");
 		Bukkit.broadcastMessage("");
 		SendMessage.sendCreditInfo();
-		SendMessage.broadcastMessage(ChatColor.RED + "주의: 본 플러그인은 저 혼자 쓰려고 만든 것입니다.");
-		SendMessage.broadcastMessage(ChatColor.RED + "주의: 여려분이 진행할때 문제가 발생할수 있습니다.");
-		SendMessage.broadcastMessage(ChatColor.RED + "주의: 즉시 개발자에게 알려주세요.");
-		SendMessage.broadcastMessage(ChatColor.RED + "gidonyou@naver.com  또는  gidonyouyt@gmail.com");
+		SendMessage.broadcastMessage(ChatColor.RED + "ì£¼ì˜: ë³¸ í”ŒëŸ¬ê·¸ì¸ì€ ì € í˜¼ìž ì“°ë ¤ê³  ë§Œë“  ê²ƒìž…ë‹ˆë‹¤.");
+		SendMessage.broadcastMessage(ChatColor.RED + "ì£¼ì˜: ì—¬ë ¤ë¶„ì´ ì§„í–‰í• ë•Œ ë¬¸ì œê°€ ë°œìƒí• ìˆ˜ ìžˆìŠµë‹ˆë‹¤.");
+		SendMessage.broadcastMessage(ChatColor.RED + "ì£¼ì˜: ì¦‰ì‹œ ê°œë°œìžì—ê²Œ ì•Œë ¤ì£¼ì„¸ìš”.");
+		SendMessage.broadcastMessage(ChatColor.RED + "gidonyou@naver.com  ë˜ëŠ”  gidonyouyt@gmail.com");
 		SendMessage.broadcastMessage("");
-		SendMessage.broadcastMessage(ChatColor.GREEN + "" + ChatColor.BOLD + " == 게임 설명 == ");
-		SendMessage.broadcastMessage("이 게임은 제한시간이 있는 꼬리 잡기입니다.");
-		SendMessage.broadcastMessage("자신에게 지정된 제한시간이 끝나면 아웃되는데요");
-		SendMessage.broadcastMessage("아이템을 획득해서 시간을 늘리던지");
-		SendMessage.broadcastMessage("자신보다 시간이 많이 남은 사람을 찾아서 아웃시키면");
-		SendMessage.broadcastMessage("아웃된 플레이어의 남은 시간 반절을 얻게 됩니다.");
-		SendMessage.broadcastMessage("하지만 자신보다 시간이 적게 남은 사람을 공격한다면");
-		SendMessage.broadcastMessage("거기에 2배에 해당되는 데미지를 입으니 조심하세요");
-		SendMessage.broadcastMessage("또한, 1등은 꼴등만 공격이 가능합니다.");
-		SendMessage.broadcastMessage("(설정에 따라 꼴등을 공격할때 데미지가 더 들어갈수 있습니다.");
+		SendMessage.broadcastMessage(ChatColor.GREEN + "" + ChatColor.BOLD + " == ê²Œìž„ ì„¤ëª… == ");
+		SendMessage.broadcastMessage("ì´ ê²Œìž„ì€ ì œí•œì‹œê°„ì´ ìžˆëŠ” ê¼¬ë¦¬ ìž¡ê¸°ìž…ë‹ˆë‹¤.");
+		SendMessage.broadcastMessage("ìžì‹ ì—ê²Œ ì§€ì •ëœ ì œí•œì‹œê°„ì´ ëë‚˜ë©´ ì•„ì›ƒë˜ëŠ”ë°ìš”");
+		SendMessage.broadcastMessage("ì•„ì´í…œì„ íšë“í•´ì„œ ì‹œê°„ì„ ëŠ˜ë¦¬ë˜ì§€");
+		SendMessage.broadcastMessage("ìžì‹ ë³´ë‹¤ ì‹œê°„ì´ ë§Žì´ ë‚¨ì€ ì‚¬ëžŒì„ ì°¾ì•„ì„œ ì•„ì›ƒì‹œí‚¤ë©´");
+		SendMessage.broadcastMessage("ì•„ì›ƒëœ í”Œë ˆì´ì–´ì˜ ë‚¨ì€ ì‹œê°„ ë°˜ì ˆì„ ì–»ê²Œ ë©ë‹ˆë‹¤.");
+		SendMessage.broadcastMessage("í•˜ì§€ë§Œ ìžì‹ ë³´ë‹¤ ì‹œê°„ì´ ì ê²Œ ë‚¨ì€ ì‚¬ëžŒì„ ê³µê²©í•œë‹¤ë©´");
+		SendMessage.broadcastMessage("ê±°ê¸°ì— 2ë°°ì— í•´ë‹¹ë˜ëŠ” ë°ë¯¸ì§€ë¥¼ ìž…ìœ¼ë‹ˆ ì¡°ì‹¬í•˜ì„¸ìš”");
+		SendMessage.broadcastMessage("ë˜í•œ, 1ë“±ì€ ê¼´ë“±ë§Œ ê³µê²©ì´ ê°€ëŠ¥í•©ë‹ˆë‹¤.");
+		SendMessage.broadcastMessage("(ì„¤ì •ì— ë”°ë¼ ê¼´ë“±ì„ ê³µê²©í• ë•Œ ë°ë¯¸ì§€ê°€ ë” ë“¤ì–´ê°ˆìˆ˜ ìžˆìŠµë‹ˆë‹¤.");
 		Bukkit.broadcastMessage("");
 
 	}

@@ -1,4 +1,4 @@
-package com.gmail.gidonyouyt.gameAge.core;
+﻿package com.gmail.gidonyouyt.gameAge.core;
 
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;

@@ -1,4 +1,4 @@
-package com.gmail.gidonyouyt.gameAge.core;
+﻿package com.gmail.gidonyouyt.gameAge.core;
 
 import java.util.List;
 
