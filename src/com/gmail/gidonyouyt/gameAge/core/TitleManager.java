@@ -5,6 +5,7 @@ import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import net.minecraft.server.v1_12_R1.IChatBaseComponent.ChatSerializer;
+import net.minecraft.server.v1_12_R1.PacketPlayOutChat;
 import net.minecraft.server.v1_12_R1.PacketPlayOutTitle;
 import net.minecraft.server.v1_12_R1.PacketPlayOutTitle.EnumTitleAction;
 import net.minecraft.server.v1_12_R1.PlayerConnection;
@@ -45,6 +46,30 @@ public class TitleManager {
 	public static void displayTitle(String title, String titleColor, String subtitle, String subtitleColor) {
 		for (Player player : Bukkit.getOnlinePlayers())
 			displayTitle(player, title, titleColor, subtitle, subtitleColor);
+	}
+
+	public static void sendClickableText(Player player, String json) {
+		PlayerConnection connection = ((CraftPlayer) player).getHandle().playerConnection;
+		PacketPlayOutChat packet = new PacketPlayOutChat(ChatSerializer.a(json));
+		connection.sendPacket(packet);
+	}
+
+	public static void sendClickableText(Player player, String text, String link, String color) {
+
+		String json = "{\"text\":\"" + text + "\",\"color\":\"" + color
+				+ "\",\"clickEvent\":{\"action\":\"open_url\",\"value\":\"" + link
+				+ "\"},\"hoverEvent\":{\"action\":\"show_text\",\"value\":{\"text\":\"\",\"extra\":[{\"text\":\"클릭하여 열기\",\"color\":\"gold\"}]}}}";
+
+		sendClickableText(player, json);
+	}
+
+	public static void sendClickableText(String text, String link, String color) {
+
+		String json = "{\"text\":\"" + text + "\",\"color\":\"" + color
+				+ "\",\"clickEvent\":{\"action\":\"open_url\",\"value\":\"" + link
+				+ "\"},\"hoverEvent\":{\"action\":\"show_text\",\"value\":{\"text\":\"\",\"extra\":[{\"text\":\"클릭하여 열기\",\"color\":\"gold\"}]}}}";
+		for (Player player : Bukkit.getOnlinePlayers())
+			sendClickableText(player, json);
 	}
 
 	public static void countDown(Player player, int i) {
