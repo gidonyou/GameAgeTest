@@ -40,7 +40,8 @@ public enum GameSettings {
 	DEV_CREDIT("개발진대해 광고해줍니다 [0/1/2] - 미작동", 0),
 	BROADCAST_CONFIG("게임 시작시 설정을 OP 에게 알려줍니다 (B)", 0),
 
-	IS_INVISIBILITY("아이템 투명화 시계 지속시간 (초)", 10);
+	IS_INVISIBILITY("아이템 투명화 시계 지속시간 (초)", 10),
+	EASTEREGG("베타테스터를 위한 작은 선물 (특별 리소스팩 필요)", 0);
 
 	public static final World world = Bukkit.getWorld("World");
 	public static final Location centerLoc = world.getSpawnLocation();
