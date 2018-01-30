@@ -120,56 +120,61 @@ public class PlayerInteract implements Listener {
 				} else {
 
 					int playerRank = Sequence.getRank(player);
-					if (playerRank <= 1) {
-						SendMessage.sendMessagePlayer(player, ChatColor.RED + "당신보다 시간이 많이 남은사람이 없습니다.");
-					} else {
-						Set<Player> NextPlayers = Sequence.getKeysByValue(Sequence.getRankList()[playerRank - 2]);
-						if (NextPlayers.isEmpty()) {
-							SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "애러: 다음플레이어 찾을수 없음");
-						} else {
-							Player np = (Player) NextPlayers.toArray()[0];
-							if (np == null) {
-								SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "애러: NULL 플레이어 찾을수 없음");
-							} else {
-								SendMessage.sendMessagePlayer(np, ChatColor.GOLD + "당신은 추적당하고 있습니다.");
-								@SuppressWarnings("unused")
-								BukkitTask runnable = new BukkitRunnable() {
-									int tick = 0;
-									double left = left0;
-									ItemMeta im = item.getItemMeta();
+					Set<Player> NextPlayers;
 
-									@Override
-									public void run() {
-										if (tick == 20) {
-											tick = 0;
-											left--;
-										}
-										tick++;
-										if (left <= 0) {
-											im.setDisplayName(ChatColor.RED + "다쓴 나침판");
-											cancel();
-										} else if (!Sequence.getPlayerPlaying().contains(np)) {
-											im.setDisplayName(ChatColor.RED + "지목된 플레이어 찾을수 없음");
-											cancel();
-										} else {
-											player.setCompassTarget(np.getLocation());
-											Location npLoc = np.getLocation().clone();
-											npLoc.setY(player.getLocation().getY());
-											im.setDisplayName(String.valueOf(
-													Math.round(player.getLocation().distance(npLoc) * 10) / 10.0));
-											ArrayList<String> lores = new ArrayList<String>();
-											lores.add(ChatColor.GREEN + "남은시간 %s 초".replace("%s",
-													ChatColor.BLUE + String.valueOf(left) + ChatColor.GREEN));
-											im.setLore(lores);
-											if (tick == 0)
-												np.playSound(np.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 10, 1);
-										}
-										event.getItem().setItemMeta(im);
+					if (playerRank <= 1) {
+						SendMessage.sendMessagePlayer(player, ChatColor.RED + "당신보다 시간이 많이 남은사람이 없습니다. 꼴등을 찾습니다.");
+						NextPlayers = Sequence
+								.getKeysByValue(Sequence.getRankList()[Sequence.getPlayerPlaying().size() - 1]);
+					} else {
+						NextPlayers = Sequence.getKeysByValue(Sequence.getRankList()[playerRank - 2]);
+					}
+					if (NextPlayers.isEmpty()) {
+						SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "애러: 플레이어 찾을수 없음");
+					} else {
+						Player np = (Player) NextPlayers.toArray()[0];
+						if (np == null) {
+							SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "애러: NULL 플레이어 찾을수 없음");
+						} else {
+							SendMessage.sendMessagePlayer(np, ChatColor.GOLD + "당신은 추적당하고 있습니다.");
+							@SuppressWarnings("unused")
+							BukkitTask runnable = new BukkitRunnable() {
+								int tick = 0;
+								double left = left0;
+								ItemMeta im = item.getItemMeta();
+
+								@Override
+								public void run() {
+									if (tick == 20) {
+										tick = 0;
+										left--;
 									}
-								}.runTaskTimer(plugin, 1L, 1L);
-							}
+									tick++;
+									if (left <= 0) {
+										im.setDisplayName(ChatColor.RED + "다쓴 나침판");
+										cancel();
+									} else if (!Sequence.getPlayerPlaying().contains(np)) {
+										im.setDisplayName(ChatColor.RED + "지목된 플레이어 찾을수 없음");
+										cancel();
+									} else {
+										player.setCompassTarget(np.getLocation());
+										Location npLoc = np.getLocation().clone();
+										npLoc.setY(player.getLocation().getY());
+										im.setDisplayName(String
+												.valueOf(Math.round(player.getLocation().distance(npLoc) * 10) / 10.0));
+										ArrayList<String> lores = new ArrayList<String>();
+										lores.add(ChatColor.GREEN + "남은시간 %s 초".replace("%s",
+												ChatColor.BLUE + String.valueOf(left) + ChatColor.GREEN));
+										im.setLore(lores);
+										if (tick == 0)
+											np.playSound(np.getLocation(), Sound.BLOCK_DISPENSER_FAIL, 10, 1);
+									}
+									event.getItem().setItemMeta(im);
+								}
+							}.runTaskTimer(plugin, 1L, 1L);
 						}
 					}
+
 				}
 			}
 			return;
