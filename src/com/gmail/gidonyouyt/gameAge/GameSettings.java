@@ -27,9 +27,9 @@ public enum GameSettings {
 	AUTO_REGEN("게임중 자동 회복 (B)", 0), // Boolean 0/1
 	SMART_DISTRIBUTE("확률지정 배분 (B)", 1), // 0/1
 	MAP_LENGTH("맵 크기", 240), // Blocks
-	MINY("최소 Y", 4), // Blocks
-	MAXY("최대 Y", 64), // Blocks
-	ALLOW_BREAK_SPLATE("돌 압력판을 제거할수 있게 해줍니다. (B)", 1),
+	MINY("최소 Y", 20), // Blocks
+	MAXY("최대 Y", 180), // Blocks
+	ALLOW_BREAK_SPLATE("돌 압력판을 제거할수 있게 해줍니다. (B)", 0),
 	TIME_RECOVER_SPLATE("돌 압력판 복구시간 (초) [-1 : disable]", 15),
 	ADD_NULL_PLAYER("외톨이 기돈유를 위한 NULL 플레이어 (B)", 0),
 	FIRST_LAST_DAMAGE_MULT("1등이 꼴등을 공격할시 데미지 곱하기 [-1 : disable]", 1.5),
