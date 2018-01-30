@@ -41,6 +41,7 @@ public enum GameSettings {
 	BROADCAST_CONFIG("게임 시작시 설정을 OP 에게 알려줍니다 (B)", 0),
 
 	IS_INVISIBILITY("아이템 투명화 시계 지속시간 (초)", 10),
+	LEGACY("꼬리잡기 룰처럼 진행합니다. (B)", 0),
 	EASTEREGG("베타테스터를 위한 작은 선물 (특별 리소스팩 필요)", 0);
 
 	public static final World world = Bukkit.getWorld("World");

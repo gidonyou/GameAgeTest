@@ -73,8 +73,17 @@ public class EntityDamage implements Listener {
 
 		if (!(Sequence.getPlayerPlaying().contains(target) && Sequence.getPlayerPlaying().contains(damager)))
 			return;
+		
+		// If it is "Legacy Attack"
+		if (GameSettings.LEGACY.value() == 1) {
+			if (Sequence.getRank(target) > Sequence.getRank(damager)) {
+				event.setCancelled(true);
+				return;
+			}
+		}
 
 		// Check Rank
+		// Last Place Checker (I do not know what I did here
 		if (Sequence.getRank(damager) == 1 && Sequence.getRank(target) == Sequence.getPlayerPlaying().size()) {
 			if (GameSettings.FIRST_LAST_DAMAGE_MULT.value() < 0)
 				return;
