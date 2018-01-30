@@ -204,8 +204,19 @@ public class PlayerInteract implements Listener {
 			entry.add("다음으로 랭크 높은사람(들)");
 
 			if (playerRank <= 1) {
-				entry.add(ChatColor.GOLD + "당신이 넘버 1");
-				entry.add(ChatColor.DARK_RED + "이템 날린겨");
+				Set<Player> NextPlayers = Sequence
+						.getKeysByValue(Sequence.getRankList()[Sequence.getPlayerPlaying().size() - 1]);
+				if (NextPlayers.isEmpty()) {
+					entry.add(ChatColor.RED + "없음");
+				} else {
+					for (Player p : NextPlayers) {
+						if (p == null) {
+							entry.add(ChatColor.RED + "애러");
+							continue;
+						}
+						entry.add(p.getName() + " (꼴등)");
+					}
+				}
 			} else {
 				Set<Player> NextPlayers = Sequence.getKeysByValue(Sequence.getRankList()[playerRank - 2]);
 				if (NextPlayers.isEmpty()) {
@@ -233,8 +244,18 @@ public class PlayerInteract implements Listener {
 			entry.add("다음으로 랭크 낮은사람(들)");
 
 			if (playerRank >= Sequence.getRankList().length) {
-				entry.add(ChatColor.GOLD + "당신이 꼴등");
-				entry.add(ChatColor.DARK_RED + "이템 날린겨");
+				Set<Player> NextPlayers = Sequence.getKeysByValue(Sequence.getRankList()[0]);
+				if (NextPlayers.isEmpty()) {
+					entry.add(ChatColor.RED + "없음");
+				} else {
+					for (Player p : NextPlayers) {
+						if (p == null) {
+							entry.add(ChatColor.RED + "애러");
+							continue;
+						}
+						entry.add(p.getName() + " (1등)");
+					}
+				}
 			} else {
 				Set<Player> NextPlayers = Sequence.getKeysByValue(Sequence.getRankList()[playerRank]);
 				if (NextPlayers.isEmpty()) {
