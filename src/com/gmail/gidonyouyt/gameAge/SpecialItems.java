@@ -33,7 +33,8 @@ public enum SpecialItems {
 	EARN_SECONDS(6),
 	
 	INVISIBILITY_WATCH(2),
-	ENDER_PEARL(2);
+	ENDER_PEARL(2),
+	SCOOP(5);
 
 	private static ArrayList<SpecialItems> itemPool;
 
@@ -234,6 +235,15 @@ public enum SpecialItems {
 			lore.add(ChatColor.GREEN + "텔레포트를 가능하게 해주는 아이템.".replace("%s",
 					ChatColor.YELLOW + String.valueOf(GameSettings.EARN_SECOUNDS_TIME.value()) + ChatColor.GREEN));
 			lore.add(ChatColor.LIGHT_PURPLE + "엔더 진주처럼 이용 가능");
+			break;
+			
+		case SCOOP:
+			is = new ItemStack(Material.RECORD_11);
+			meta = is.getItemMeta();
+			meta.setDisplayName(ChatColor.RESET + "랜덤 1인 랭크 공개  " + ChatColor.GRAY + "(1회용)");
+			lore.add(ChatColor.GREEN + "랜덤으로 한명의 플레이어 (이용하는 유저 포함)의");
+			lore.add(ChatColor.GREEN + "순위와 남은 시간을 알려줍니다.");
+			lore.add(ChatColor.LIGHT_PURPLE + "우클릭으로 이용 가능.");
 			break;
 			
 			
