@@ -264,14 +264,14 @@ public class PlayerInteract implements Listener {
 				Set<Player> NextPlayers = Sequence.getKeysByValue(Sequence.getRankList()[i]);
 
 				if (NextPlayers.isEmpty()) {
-					entry.add(ChatColor.RESET + String.valueOf(i) + ". " + ChatColor.RED + "없음");
+					entry.add(ChatColor.RESET + String.valueOf(i + 1) + ". " + ChatColor.RED + "없음");
 				} else {
 					for (Player p : NextPlayers) {
 						if (p == null) {
-							entry.add(ChatColor.RESET + String.valueOf(i) + ". " + ChatColor.RED + "애러");
+							entry.add(ChatColor.RESET + String.valueOf(i + 1) + ". " + ChatColor.RED + "애러");
 							continue;
 						}
-						entry.add(ChatColor.RESET + String.valueOf(i) + ". " + p.getName());
+						entry.add(ChatColor.RESET + String.valueOf(i + 1) + ". " + p.getName());
 					}
 				}
 			}
