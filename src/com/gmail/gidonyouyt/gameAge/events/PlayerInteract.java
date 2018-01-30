@@ -2,6 +2,7 @@ package com.gmail.gidonyouyt.gameAge.events;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Set;
 
 import org.bukkit.Bukkit;
@@ -45,7 +46,7 @@ public class PlayerInteract implements Listener {
 		Player player = event.getPlayer();
 		if (event.getItem() == null)
 			return;
-		
+
 		if (GameStatus.getStatus() == GameStatus.COUNT_DOWN) {
 			event.setCancelled(true);
 			SendMessage.sendMessagePlayer(player, "게임 시작전에는 사용하실 수 없습니다.");
@@ -319,9 +320,26 @@ public class PlayerInteract implements Listener {
 					new PotionEffect(PotionEffectType.INVISIBILITY, 20 * (int) GameSettings.IS_INVISIBILITY.value(), 0),
 					false);
 
-			SendMessage.sendMessagePlayer(player,
-					String.valueOf(GameSettings.IS_INVISIBILITY.value()) + "초동안 투명해집니다.");
+			SendMessage.sendMessagePlayer(player, String.valueOf(GameSettings.IS_INVISIBILITY.value()) + "초동안 투명해집니다.");
 			removeItem(event);
+		} else if (item.equals(SpecialItems.SCOOP.get())) {
+			int random = (int) Math.floor(Math.random() * Sequence.getPlayerPlaying().size());
+			List<Player> list = new ArrayList<Player>(Sequence.getPlayerPlaying());
+			Player luckyPlayer = list.get(random);
+			SendMessage.broadcastMessage(ChatColor.BLUE + "" + ChatColor.BOLD + "랜덤 1인 순위와 시간이 공개됩니다:");
+			SendMessage
+					.broadcastMessage(ChatColor.AQUA + player.getName() + ChatColor.GREEN
+							+ "님의 랭크는 %l위, 남은 시간은 %t 입니다."
+									.replace("%l",
+											ChatColor.GOLD + String.valueOf(Sequence.getRank(luckyPlayer))
+													+ ChatColor.GREEN)
+									.replace("%t",
+											ChatColor.GOLD
+													+ Sequence.toMinute(Sequence.getPlayerTime().get(luckyPlayer))
+													+ ChatColor.GREEN));
+			for (Player pl : Bukkit.getOnlinePlayers())
+				pl.playSound(pl.getLocation(), Sound.ENTITY_SHEEP_AMBIENT, 1, 1);
+
 		}
 	}
 
