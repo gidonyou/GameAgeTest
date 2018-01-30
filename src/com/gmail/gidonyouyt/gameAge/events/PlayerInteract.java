@@ -32,6 +32,14 @@ import com.gmail.gidonyouyt.gameAge.core.BookManager;
 import com.gmail.gidonyouyt.gameAge.core.GameStatus;
 import com.gmail.gidonyouyt.gameAge.core.SendMessage;
 
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.chat.ComponentSerializer;
+import net.minecraft.server.v1_12_R1.IChatBaseComponent;
+import net.minecraft.server.v1_12_R1.IChatBaseComponent.ChatSerializer;
+
 public class PlayerInteract implements Listener {
 	private GameAge plugin;
 
@@ -339,6 +347,29 @@ public class PlayerInteract implements Listener {
 													+ ChatColor.GREEN));
 			for (Player pl : Bukkit.getOnlinePlayers())
 				pl.playSound(pl.getLocation(), Sound.ENTITY_SHEEP_AMBIENT, 1, 1);
+
+		} else if (item.equals(SpecialItems.STEAL_TARGET.get())) {
+			ArrayList<IChatBaseComponent> icbs = new ArrayList<IChatBaseComponent>();
+
+			icbs.add(ChatSerializer.a("{\"text\":\"데스노트\n\n\",\"color\":\"none\"}"));
+
+			for (Player ep : Sequence.getPlayerPlaying()) {
+				TextComponent text;
+				if (ep == null) {
+					text = new TextComponent("없음\n");
+					text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+							new ComponentBuilder(ChatColor.RED + "없음" + "에서 시간을 뺏습니다.").create()));
+				} else {
+					text = new TextComponent(ep.getName() + "\n");
+					text.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "ga steal " + ep.getName()));
+					text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+							new ComponentBuilder(ChatColor.RED + ep.getName() + "에서 시간을 뺏습니다.").create()));
+				}
+				IChatBaseComponent icb = ChatSerializer.a(ComponentSerializer.toString(text));
+				icbs.add(icb);
+			}
+			ItemStack book = BookManager.book("Test", "Test", ChatSerializer.a(String.join(icbs.toString(), ",")));
+			BookManager.openBook(book, player);
 
 		}
 	}

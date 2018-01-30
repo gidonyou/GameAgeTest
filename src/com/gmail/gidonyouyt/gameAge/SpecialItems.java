@@ -7,6 +7,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -190,9 +191,9 @@ public enum SpecialItems {
 			lore.add(ChatColor.LIGHT_PURPLE + "");
 			lore.add(ChatColor.YELLOW + "쿨타임: 3초");
 			break;
-
+			
 		case STEAL_TARGET:
-			is = new ItemStack(Material.BOOK_AND_QUILL);
+			is = new ItemStack(Material.STICK);
 			meta = is.getItemMeta();
 			meta.setDisplayName(ChatColor.RESET + "상대방 수명뺏기  " + ChatColor.GRAY + "(1회용)");
 			lore.add(ChatColor.GREEN + "지목 상대에서 시간을 뺏습니다.");
@@ -206,9 +207,28 @@ public enum SpecialItems {
 			lore.add(ChatColor.DARK_RED + "주의: 1페이지에 ");
 			lore.add(ChatColor.DARK_RED + "지목인 이름을 정확히 입력하세요 ");
 			lore.add("");
-			lore.add(ChatColor.LIGHT_PURPLE + "책에 쓴후 서명후");
+			lore.add(ChatColor.LIGHT_PURPLE + "책에 있는 이름을");
 			lore.add(ChatColor.LIGHT_PURPLE + "우클릭 하면 이용 가능");
 			break;
+
+//		case STEAL_TARGET:
+//			is = new ItemStack(Material.BOOK_AND_QUILL);
+//			meta = is.getItemMeta();
+//			meta.setDisplayName(ChatColor.RESET + "상대방 수명뺏기  " + ChatColor.GRAY + "(1회용)");
+//			lore.add(ChatColor.GREEN + "지목 상대에서 시간을 뺏습니다.");
+//			lore.add("%i 초 이상 남은 상대에게 %s 초 강탈"
+//					.replace("%i",
+//							ChatColor.YELLOW + String.valueOf(GameSettings.STEAL_IMMUNE_TIME_SEC.value())
+//									+ ChatColor.BLUE)
+//					.replace("%s",
+//							ChatColor.RED + String.valueOf(GameSettings.STEAL_TIME_SEC.value()) + ChatColor.BLUE));
+//			lore.add("");
+//			lore.add(ChatColor.DARK_RED + "주의: 1페이지에 ");
+//			lore.add(ChatColor.DARK_RED + "지목인 이름을 정확히 입력하세요 ");
+//			lore.add("");
+//			lore.add(ChatColor.LIGHT_PURPLE + "책에 쓴후 서명후");
+//			lore.add(ChatColor.LIGHT_PURPLE + "우클릭 하면 이용 가능");
+//			break;
 
 		case EARN_SECONDS:
 			is = new ItemStack(Material.REDSTONE);
@@ -304,6 +324,10 @@ public enum SpecialItems {
 
 		itemPool = pool;
 		SendMessage.sendMessageOP("Setup Random Pool - Entry: " + itemPool.size());
+	}
+	
+	public static void deathNote(Player sender, Player target) {
+		
 	}
 
 }
