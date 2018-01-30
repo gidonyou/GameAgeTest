@@ -42,7 +42,8 @@ public enum GameSettings {
 
 	IS_INVISIBILITY("아이템 투명화 시계 지속시간 (초)", 10),
 	LEGACY("꼬리잡기 룰처럼 진행합니다. (B)", 0),
-	EASTEREGG("베타테스터를 위한 작은 선물 (특별 리소스팩 필요)", 0);
+	EASTEREGG("베타테스터를 위한 작은 선물 (특별 리소스팩 필요)", 0),
+	ADD_ENCHANTMENT("아이템에 인첸트를 추가합니다 (B) ", 0);
 
 	public static final World world = Bukkit.getWorld("World");
 	public static final Location centerLoc = world.getSpawnLocation();

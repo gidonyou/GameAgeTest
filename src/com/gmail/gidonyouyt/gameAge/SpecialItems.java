@@ -31,7 +31,7 @@ public enum SpecialItems {
 	BANDAGE(15),
 	STEAL_TARGET(3),
 	EARN_SECONDS(6),
-	
+
 	INVISIBILITY_WATCH(2),
 	ENDER_PEARL(2),
 	SCOOP(5);
@@ -114,7 +114,7 @@ public enum SpecialItems {
 			lore.add(ChatColor.LIGHT_PURPLE + "칼처럼 이용 가능");
 			meta.setUnbreakable(true);
 			break;
-			
+
 		case GOLD_SWORD:
 			is = new ItemStack(Material.GOLD_SWORD);
 			meta = is.getItemMeta();
@@ -125,23 +125,23 @@ public enum SpecialItems {
 			lore.add(ChatColor.LIGHT_PURPLE + "칼처럼 이용 가능");
 			meta.setUnbreakable(true);
 			is.setItemMeta(meta);
-			
+
 			net.minecraft.server.v1_12_R1.ItemStack nmsStack = CraftItemStack.asNMSCopy(is);
 			NBTTagCompound compound = (nmsStack.hasTag()) ? nmsStack.getTag() : new NBTTagCompound();
-            NBTTagList modifiers = new NBTTagList();
-            NBTTagCompound damage = new NBTTagCompound();
-            damage.set("AttributeName", new NBTTagString("generic.attackDamage"));
-            damage.set("Name", new NBTTagString("generic.attackDamage"));
-            damage.set("Amount", new NBTTagInt(10));
-            damage.set("Operation", new NBTTagInt(0));
-            damage.set("UUIDLeast", new NBTTagInt(894654));
-            damage.set("UUIDMost", new NBTTagInt(2872));
-            damage.set("Slot", new NBTTagString("mainhand"));
-            
-            modifiers.add(damage);
-            compound.set("AttributeModifiers", modifiers);
-            nmsStack.setTag(compound);
-            is = CraftItemStack.asBukkitCopy(nmsStack);
+			NBTTagList modifiers = new NBTTagList();
+			NBTTagCompound damage = new NBTTagCompound();
+			damage.set("AttributeName", new NBTTagString("generic.attackDamage"));
+			damage.set("Name", new NBTTagString("generic.attackDamage"));
+			damage.set("Amount", new NBTTagInt(10));
+			damage.set("Operation", new NBTTagInt(0));
+			damage.set("UUIDLeast", new NBTTagInt(894654));
+			damage.set("UUIDMost", new NBTTagInt(2872));
+			damage.set("Slot", new NBTTagString("mainhand"));
+
+			modifiers.add(damage);
+			compound.set("AttributeModifiers", modifiers);
+			nmsStack.setTag(compound);
+			is = CraftItemStack.asBukkitCopy(nmsStack);
 			break;
 
 		case IRON_SWORD:
@@ -218,7 +218,7 @@ public enum SpecialItems {
 					ChatColor.YELLOW + String.valueOf(GameSettings.EARN_SECOUNDS_TIME.value()) + ChatColor.GREEN));
 			lore.add(ChatColor.LIGHT_PURPLE + "우클릭으로 이용 가능.");
 			break;
-			
+
 		case INVISIBILITY_WATCH:
 			is = new ItemStack(Material.GOLD_RECORD);
 			meta = is.getItemMeta();
@@ -227,7 +227,7 @@ public enum SpecialItems {
 					ChatColor.YELLOW + String.valueOf(GameSettings.IS_INVISIBILITY.value()) + ChatColor.GREEN));
 			lore.add(ChatColor.LIGHT_PURPLE + "우클릭으로 이용 가능.");
 			break;
-			
+
 		case ENDER_PEARL:
 			is = new ItemStack(Material.ENDER_PEARL);
 			meta = is.getItemMeta();
@@ -236,7 +236,7 @@ public enum SpecialItems {
 					ChatColor.YELLOW + String.valueOf(GameSettings.EARN_SECOUNDS_TIME.value()) + ChatColor.GREEN));
 			lore.add(ChatColor.LIGHT_PURPLE + "엔더 진주처럼 이용 가능");
 			break;
-			
+
 		case SCOOP:
 			is = new ItemStack(Material.RECORD_11);
 			meta = is.getItemMeta();
@@ -245,8 +245,7 @@ public enum SpecialItems {
 			lore.add(ChatColor.GREEN + "순위와 남은 시간을 알려줍니다.");
 			lore.add(ChatColor.LIGHT_PURPLE + "우클릭으로 이용 가능.");
 			break;
-			
-			
+
 		default:
 			break;
 		}
@@ -254,7 +253,8 @@ public enum SpecialItems {
 		if (!(lore.isEmpty()))
 			meta.setLore(lore);
 		is.setItemMeta(meta);
-		is.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
+		if (GameSettings.ADD_ENCHANTMENT.value() == 1)
+			is.addUnsafeEnchantment(Enchantment.DURABILITY, 1);
 		return is;
 	}
 
