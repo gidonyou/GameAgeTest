@@ -368,7 +368,7 @@ public class PlayerInteract implements Listener {
 				IChatBaseComponent icb = ChatSerializer.a(ComponentSerializer.toString(text));
 				icbs.add(icb);
 			}
-			ItemStack book = BookManager.book("Test", "Test", ChatSerializer.a(String.join(icbs.toString(), ",")));
+			ItemStack book = BookManager.book("Test", "Test", icbs.get(1));
 			BookManager.openBook(book, player);
 
 		}
