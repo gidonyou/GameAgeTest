@@ -349,12 +349,11 @@ public class PlayerInteract implements Listener {
 				pl.playSound(pl.getLocation(), Sound.ENTITY_SHEEP_AMBIENT, 1, 1);
 
 		} else if (item.equals(SpecialItems.STEAL_TARGET.get())) {
-			ArrayList<IChatBaseComponent> icbs = new ArrayList<IChatBaseComponent>();
 
-			icbs.add(ChatSerializer.a("{\"text\":\"데스노트\n\n\",\"color\":\"none\"}"));
+			TextComponent finalText = new TextComponent("데스노트! \n\n");
 
 			for (Player ep : Sequence.getPlayerPlaying()) {
-				TextComponent text;
+				TextComponent text = new TextComponent("오류");
 				if (ep == null) {
 					text = new TextComponent("없음\n");
 					text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
@@ -365,10 +364,11 @@ public class PlayerInteract implements Listener {
 					text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
 							new ComponentBuilder(ChatColor.RED + ep.getName() + "에서 시간을 뺏습니다.").create()));
 				}
-				IChatBaseComponent icb = ChatSerializer.a(ComponentSerializer.toString(text));
-				icbs.add(icb);
+				finalText.addExtra(text);
 			}
-			ItemStack book = BookManager.book("Test", "Test", icbs.get(1));
+			IChatBaseComponent icb = ChatSerializer.a(ComponentSerializer.toString(finalText));
+
+			ItemStack book = BookManager.book("Test", "Test", icb);
 			BookManager.openBook(book, player);
 
 		}
