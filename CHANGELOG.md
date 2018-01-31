@@ -12,6 +12,7 @@ TODO: Plugin.yml 버전 확인.
   - 타이틀: 시작할때 카운트 다운을 추가하였습니다.  
   시작 카운트 다운은 `COUNTDOWN_TIME` 에서 변경 가능.
   - 타이틀: 게임이 끝났을때 우승자를 알려줍니다.
+  - Game End --> Dead player teleport to last player
 
 ### 게임중
   - 타이틀: 아웃된 플레이어를 화면에 알려줍니다.

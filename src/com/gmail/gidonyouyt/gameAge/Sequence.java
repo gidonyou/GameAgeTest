@@ -41,6 +41,7 @@ public class Sequence {
 	private static HashMap<Player, Objective> playerObjective = new HashMap<Player, Objective>();
 	private static HashMap<Player, Integer> playerRemaingTime = new HashMap<Player, Integer>();
 	private static HashSet<Player> playerPlaying = new HashSet<Player>();
+	private static HashSet<Player> playerOut = new HashSet<Player>();
 
 	public static void start() {
 		SendMessage.broadcastMessage(ChatColor.BLUE + "시퀀스 - 게임이 시작됩니다!");
@@ -157,6 +158,15 @@ public class Sequence {
 							.broadcastMessage(ChatColor.BLUE + winner.getName() + ChatColor.RESET + " 님 우승!!! 축하합니다!");
 					TitleManager.displayTitle(ChatColor.BLUE + winner.getName() + ChatColor.RESET + " 님 우승", "gold",
 							"남은시간: " + toMinute(playerRemaingTime.get(winner)), "gray");
+					
+					// Teleport Out Player
+					for (Player outPlayer : playerOut) {
+						if (outPlayer == null)
+							continue;
+						outPlayer.teleport(winner.getLocation());
+						outPlayer.setGameMode(GameMode.SURVIVAL);
+						playerOut.remove(outPlayer)
+					}
 				}
 			}
 			GameStatus.setStatus(GameStatus.FINSHED);
@@ -233,6 +243,7 @@ public class Sequence {
 		playerObjective.clear();
 		playerRemaingTime.clear();
 		playerPlaying.clear();
+		outPlayer.clear();
 
 		GameBorder.clearBorder();
 		BlockBreak.recoverAll();
@@ -258,6 +269,7 @@ public class Sequence {
 		SendMessage.broadcastMessage(ChatColor.RED + player.getName() + ChatColor.RESET + "님 아웃");
 		playerPlaying.remove(player);
 		player.setGameMode(GameMode.SPECTATOR);
+		playerOut.add(player);
 
 	}
 
