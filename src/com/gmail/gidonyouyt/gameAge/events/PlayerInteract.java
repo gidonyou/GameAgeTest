@@ -331,6 +331,18 @@ public class PlayerInteract implements Listener {
 	private void openBook(Player player, ArrayList<String> entry) {
 		BookManager.openBook(BookManager.book("", "", String.join("\n", entry)), player);
 	}
+	
+	public static void removeItem(Player player) {
+
+			ItemStack item = player.getInventory().getItemInMainHand();
+			if (item.getAmount() == 1)
+				player.getInventory().setItemInMainHand(null);
+			else if (item.getAmount() > 1) {
+				item.setAmount(item.getAmount() - 1);
+				player.getInventory().setItemInMainHand(item);
+			}
+		
+	}
 
 	private void removeItem(PlayerInteractEvent event) {
 		Player player = event.getPlayer();

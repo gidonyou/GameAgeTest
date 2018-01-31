@@ -11,6 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.gmail.gidonyouyt.gameAge.core.SendMessage;
+import com.gmail.gidonyouyt.gameAge.events.PlayerInteract;
 
 public class CGa implements CommandExecutor {
 
@@ -47,6 +48,7 @@ public class CGa implements CommandExecutor {
 						ChatColor.RED + "그대는 %s 한테  %t 초를 뺏겼다".replace("%s", player.getName())
 								.replace("%t", String.valueOf(GameSettings.STEAL_TIME_SEC.value())));
 				target.playSound(target.getLocation(), Sound.ENTITY_ENDERMEN_TELEPORT, 1, 1);
+				PlayerInteract.removeItem(player);
 			}
 			
 			return true;

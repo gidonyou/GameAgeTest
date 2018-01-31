@@ -47,6 +47,7 @@ public class GameAge extends JavaPlugin {
 		// Commands
 		getCommand("game").setExecutor(new CGame());
 		getCommand("play").setExecutor(new CPlay(this));
+		getCommand("ga").setExecutor(new CGa());
 		getCommand("play").setTabCompleter(new CPlayCompleter());
 
 		PluginManager pm = getServer().getPluginManager();
