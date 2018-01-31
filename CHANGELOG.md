@@ -39,6 +39,7 @@ TODO: Plugin.yml 버전 확인.
     - `MINY` : 4 --> 20  
     - `MAXY` : 64 --> 180
     - `ALLOW_BREAK_SPLATE` : 1 --> 0
+    - `AUTO_BORDER` : 3 --> 0
 ### 아이템 추가
 *제가 아이템 설명 쓰기 귀찮아서 그냥 NF3charcoaL님이 쓴것 복사*
 

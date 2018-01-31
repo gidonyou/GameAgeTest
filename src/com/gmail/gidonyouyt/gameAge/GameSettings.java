@@ -18,7 +18,7 @@ public enum GameSettings {
 	STEAL_TIME_SEC("뺏을수 있는 시간 (초)", 30), // Seconds
 	STEAL_IMMUNE_TIME_SEC("뻿는것 보호받는 시간 (초)", 45), // Seconds
 	EARN_SECOUNDS_TIME("시간 추가 아이템 시간 (초)", 20), // Seconds
-	AUTO_BORDER("자동 게임구역 제한 (분) [0 - disable]", 3), // Time in Minute -- 0 none;
+	AUTO_BORDER("자동 게임구역 제한 (분) [0 - disable]", 0), // Time in Minute -- 0 none;
 	COMPASS_DURABILITY("나침판 작동시간 (초)", 30),
 	FORCE_DAMAGE_DISTANCE("강제 데미지 거리", 60),
 	FORCE_DAMAGE_TIME("강제 데미지 경고 시간 (초)", 20),
