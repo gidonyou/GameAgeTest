@@ -1,13 +1,18 @@
 package com.gmail.gidonyouyt.gameAge.core;
 
+import java.util.List;
+
 import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
 import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftItemStack;
+import org.bukkit.craftbukkit.v1_12_R1.inventory.CraftMetaBook;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.BookMeta;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
+import net.minecraft.server.v1_12_R1.IChatBaseComponent;
 import net.minecraft.server.v1_12_R1.NBTTagCompound;
 import net.minecraft.server.v1_12_R1.NBTTagList;
 import net.minecraft.server.v1_12_R1.NBTTagString;
@@ -30,6 +35,33 @@ public class BookManager {
 		nmsis.setTag(bd);
 		is = CraftItemStack.asBukkitCopy(nmsis);
 		return is;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public static ItemStack book(String title, String author, IChatBaseComponent... icbcs) {
+		ItemStack book = new ItemStack(Material.WRITTEN_BOOK);
+		BookMeta bookMeta = (BookMeta) book.getItemMeta();
+		List<IChatBaseComponent> pages;
+		
+		//get the pages
+		try {
+		    pages = (List<IChatBaseComponent>) CraftMetaBook.class.getDeclaredField("pages").get(bookMeta);
+		} catch (ReflectiveOperationException ex) {
+		    ex.printStackTrace();
+		    return null;
+		}
+		
+		for (IChatBaseComponent icbc : icbcs) {
+			pages.add(icbc);
+		}
+		
+		bookMeta.setTitle(title);
+		bookMeta.setAuthor(author);
+		
+		//update the ItemStack with this new meta
+		book.setItemMeta(bookMeta);
+		
+		return book;
 	}
 
 	public static void openBook(ItemStack book, Player p) {

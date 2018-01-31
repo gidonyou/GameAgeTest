@@ -17,7 +17,6 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.BookMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -31,6 +30,14 @@ import com.gmail.gidonyouyt.gameAge.SpecialItems;
 import com.gmail.gidonyouyt.gameAge.core.BookManager;
 import com.gmail.gidonyouyt.gameAge.core.GameStatus;
 import com.gmail.gidonyouyt.gameAge.core.SendMessage;
+
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.chat.ComponentSerializer;
+import net.minecraft.server.v1_12_R1.IChatBaseComponent;
+import net.minecraft.server.v1_12_R1.IChatBaseComponent.ChatSerializer;
 
 public class PlayerInteract implements Listener {
 	private GameAge plugin;
@@ -62,53 +69,7 @@ public class PlayerInteract implements Listener {
 
 		// Check List && Written Book Trigger
 		if (!SpecialItems.getAllItemsList().contains(item)) {
-			if (item.getType().equals(Material.WRITTEN_BOOK)) {
-				BookMeta bm = (BookMeta) item.getItemMeta();
-				String author = bm.getAuthor();
-				Player playerAuthor = Bukkit.getPlayer(author);
-				if (author == null || playerAuthor == null)
-					return;
-				if (GameStatus.getStatus() != GameStatus.RUNNING) {
-					SendMessage.sendMessagePlayer(player, "본 아이템은 게임중에만 이용하실수 있습니다.");
-					return;
-				}
-				if (!Sequence.getPlayerPlaying().contains(player)) {
-					SendMessage.sendMessagePlayer(player, "본 아이템은 게임참가자만 이용하실수 있습니다.");
-					return;
-				}
-				if (player == playerAuthor) {
-					Player target = Bukkit.getPlayer(bm.getPage(1));
-					if (target == null) {
-						SendMessage.sendMessagePlayer(playerAuthor, ChatColor.DARK_RED + "그대의 지목을 찾을수 없다.");
-					} else {
-						if (!(Sequence.getPlayerPlaying().contains(target)
-								|| Sequence.getPlayerTime().containsKey(target))) {
-							SendMessage.sendMessagePlayer(playerAuthor, ChatColor.DARK_RED + "그대의 지목은 게임중이 아니다.");
-						} else {
-							HashMap<Player, Integer> pTimes = Sequence.getPlayerTime();
-							int targetTime = pTimes.get(target);
-							double immuneTime = GameSettings.STEAL_IMMUNE_TIME_SEC.value();
-							if (targetTime <= immuneTime) {
-								SendMessage.sendMessagePlayer(playerAuthor,
-										ChatColor.DARK_RED + "그대의 지목은 " + immuneTime + " 미만이기에 실패.");
-							} else {
-								pTimes.put(player, (int) (pTimes.get(player) + GameSettings.STEAL_TIME_SEC.value()));
-								pTimes.put(target, (int) (pTimes.get(target) - GameSettings.STEAL_TIME_SEC.value()));
-								SendMessage.sendMessagePlayer(player, ChatColor.BLUE + "그대의 지목에서 %t 초를 뺏었다"
-										.replace("%t", String.valueOf(GameSettings.STEAL_TIME_SEC.value())));
-								SendMessage.sendMessagePlayer(target,
-										ChatColor.RED + "그대는 %s 한테  %t 초를 뺏겼다".replace("%s", player.getName())
-												.replace("%t", String.valueOf(GameSettings.STEAL_TIME_SEC.value())));
-								target.playSound(target.getLocation(), Sound.ENTITY_ENDERMEN_TELEPORT, 1, 1);
-							}
-						}
-					}
-				} else {
-					SendMessage.sendMessagePlayer(player, ChatColor.DARK_RED + "그대는 이책의 주인이 아닙니다.");
-				}
-
-				removeItem(event);
-			} else if (item.getItemMeta().getDisplayName() != null && item.getItemMeta().getDisplayName()
+			if (item.getItemMeta().getDisplayName() != null && item.getItemMeta().getDisplayName()
 					.equals(SpecialItems.LOCATION_FINDER.get().getItemMeta().getDisplayName())) {
 				double left0 = GameSettings.COMPASS_DURABILITY.value();
 				if (GameStatus.getStatus() != GameStatus.RUNNING) {
@@ -366,11 +327,47 @@ public class PlayerInteract implements Listener {
 			for (Player pl : Bukkit.getOnlinePlayers())
 				pl.playSound(pl.getLocation(), Sound.ENTITY_SHEEP_AMBIENT, 1, 1);
 
+		} else if (item.equals(SpecialItems.STEAL_TARGET.get())) {
+
+			TextComponent finalText = new TextComponent("데스노트! \n\n");
+
+			for (Player ep : Sequence.getPlayerPlaying()) {
+				TextComponent text = new TextComponent("오류");
+				if (ep == null) {
+					text = new TextComponent("없음\n");
+					text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+							new ComponentBuilder(ChatColor.RED + "없음" + "에서 시간을 뺏습니다.").create()));
+				} else {
+					text = new TextComponent(ep.getName() + "\n");
+					text.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/ga steal " + ep.getName()));
+					text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+							new ComponentBuilder(ChatColor.YELLOW + ep.getName() + ChatColor.GOLD + "에서 시간을 뺏습니다.")
+									.create()));
+				}
+				finalText.addExtra(text);
+			}
+			IChatBaseComponent icb = ChatSerializer.a(ComponentSerializer.toString(finalText));
+
+			ItemStack book = BookManager.book("Test", "Test", icb);
+			BookManager.openBook(book, player);
+
 		}
 	}
 
 	private void openBook(Player player, ArrayList<String> entry) {
 		BookManager.openBook(BookManager.book("", "", String.join("\n", entry)), player);
+	}
+	
+	public static void removeItem(Player player) {
+
+			ItemStack item = player.getInventory().getItemInMainHand();
+			if (item.getAmount() == 1)
+				player.getInventory().setItemInMainHand(null);
+			else if (item.getAmount() > 1) {
+				item.setAmount(item.getAmount() - 1);
+				player.getInventory().setItemInMainHand(item);
+			}
+		
 	}
 
 	private void removeItem(PlayerInteractEvent event) {
