@@ -165,7 +165,7 @@ public class Sequence {
 							continue;
 						outPlayer.teleport(winner.getLocation());
 						outPlayer.setGameMode(GameMode.SURVIVAL);
-						playerOut.remove(outPlayer)
+						playerOut.remove(outPlayer);
 					}
 				}
 			}
@@ -243,7 +243,7 @@ public class Sequence {
 		playerObjective.clear();
 		playerRemaingTime.clear();
 		playerPlaying.clear();
-		outPlayer.clear();
+		playerOut.clear();
 
 		GameBorder.clearBorder();
 		BlockBreak.recoverAll();
