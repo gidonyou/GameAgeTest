@@ -326,6 +326,7 @@ public class PlayerInteract implements Listener {
 													+ ChatColor.GREEN));
 			for (Player pl : Bukkit.getOnlinePlayers())
 				pl.playSound(pl.getLocation(), Sound.ENTITY_SHEEP_AMBIENT, 1, 1);
+			removeItem(event);
 
 		} else if (item.equals(SpecialItems.STEAL_TARGET.get())) {
 

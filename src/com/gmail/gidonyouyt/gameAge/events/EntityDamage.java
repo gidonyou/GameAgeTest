@@ -61,6 +61,7 @@ public class EntityDamage implements Listener {
 			target.playSound(target.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
 			target.getInventory().setItemInMainHand(null);
 			event.setDamage(10);
+			PlayerInteract.removeItem(damager);
 		}
 
 		if (GameStatus.getStatus() == GameStatus.COUNT_DOWN) {
