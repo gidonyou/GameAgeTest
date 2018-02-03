@@ -15,6 +15,7 @@ import com.gmail.gidonyouyt.gameAge.Sequence;
 import com.gmail.gidonyouyt.gameAge.SpecialItems;
 import com.gmail.gidonyouyt.gameAge.core.GameStatus;
 import com.gmail.gidonyouyt.gameAge.core.SendMessage;
+import com.gmail.gidonyouyt.gameAge.core.TitleManager;
 
 public class EntityDamage implements Listener {
 
@@ -55,7 +56,7 @@ public class EntityDamage implements Listener {
 
 		Player target = (Player) event.getEntity();
 		Player damager = (Player) event.getDamager();
-		
+
 		// Gold Sword
 		if (damager.getInventory().getItemInMainHand().equals(SpecialItems.GOLD_SWORD.get())) {
 			damager.playSound(damager.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
@@ -105,6 +106,8 @@ public class EntityDamage implements Listener {
 				} else {
 					damager.damage(newDamage, target);
 				}
+				TitleManager.displayTitle(damager, "자신보다 시간이 많이 남은 유저만 공격가능", "red", "잘못공격할시 데미지가 2배가 되어 돌아옵니다.",
+						"white");
 				return;
 			}
 
