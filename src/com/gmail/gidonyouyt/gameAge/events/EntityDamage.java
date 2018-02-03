@@ -57,11 +57,10 @@ public class EntityDamage implements Listener {
 		Player damager = (Player) event.getDamager();
 		
 		// Gold Sword
-		if (target.getInventory().getItemInMainHand().equals(SpecialItems.GOLD_SWORD.get())) {
-			target.playSound(target.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
-			target.getInventory().setItemInMainHand(null);
+		if (damager.getInventory().getItemInMainHand().equals(SpecialItems.GOLD_SWORD.get())) {
+			damager.playSound(damager.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
+			damager.getInventory().setItemInMainHand(null);
 			event.setDamage(10);
-			PlayerInteract.removeItem(target);
 		}
 
 		if (GameStatus.getStatus() == GameStatus.COUNT_DOWN) {
