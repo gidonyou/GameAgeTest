@@ -315,7 +315,7 @@ public class PlayerInteract implements Listener {
 			Player luckyPlayer = list.get(random);
 			SendMessage.broadcastMessage(ChatColor.BLUE + "" + ChatColor.BOLD + "랜덤 1인 순위와 시간이 공개됩니다:");
 			SendMessage
-					.broadcastMessage(ChatColor.AQUA + player.getName() + ChatColor.GREEN
+					.broadcastMessage(ChatColor.AQUA + luckyPlayer.getName() + ChatColor.GREEN
 							+ "님의 랭크는 %l위, 남은 시간은 %t 입니다."
 									.replace("%l",
 											ChatColor.GOLD + String.valueOf(Sequence.getRank(luckyPlayer))

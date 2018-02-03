@@ -32,12 +32,6 @@ public class EntityDamage implements Listener {
 			if (GameStatus.getStatus() != GameStatus.RUNNING)
 				return;
 
-			// Gold Sword
-			if (player.getInventory().getItemInMainHand().equals(SpecialItems.GOLD_SWORD.get())) {
-				player.playSound(player.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
-				player.getInventory().setItemInMainHand(null);
-			}
-
 			if (event.getCause() == DamageCause.ENTITY_ATTACK)
 				return;
 
@@ -61,6 +55,13 @@ public class EntityDamage implements Listener {
 
 		Player target = (Player) event.getEntity();
 		Player damager = (Player) event.getDamager();
+		
+		// Gold Sword
+		if (target.getInventory().getItemInMainHand().equals(SpecialItems.GOLD_SWORD.get())) {
+			target.playSound(target.getLocation(), Sound.ENTITY_ITEM_BREAK, 1, 1);
+			target.getInventory().setItemInMainHand(null);
+			event.setDamage(10);
+		}
 
 		if (GameStatus.getStatus() == GameStatus.COUNT_DOWN) {
 			event.setCancelled(true);
@@ -73,44 +74,44 @@ public class EntityDamage implements Listener {
 
 		if (!(Sequence.getPlayerPlaying().contains(target) && Sequence.getPlayerPlaying().contains(damager)))
 			return;
-		
+
 		// If it is "Legacy Attack"
 		if (GameSettings.LEGACY.value() == 1) {
 			if (Sequence.getRank(target) > Sequence.getRank(damager)) {
 				event.setCancelled(true);
 				return;
 			}
-		}
+		} else {
 
-		// Check Rank
-		// Last Place Checker (I do not know what I did here
-		if (Sequence.getRank(damager) == 1 && Sequence.getRank(target) == Sequence.getPlayerPlaying().size()) {
-			if (GameSettings.FIRST_LAST_DAMAGE_MULT.value() < 0)
+			// Check Rank
+			// Last Place Checker (I do not know what I did here
+			if (Sequence.getRank(damager) == 1 && Sequence.getRank(target) == Sequence.getPlayerPlaying().size()) {
+				if (GameSettings.FIRST_LAST_DAMAGE_MULT.value() < 0)
+					return;
+				double newDamage = event.getDamage() * GameSettings.FIRST_LAST_DAMAGE_MULT.value();
+				if (newDamage >= target.getHealth()) {
+					pvpTime(event, target, damager);
+				} else {
+					event.setDamage(newDamage);
+				}
 				return;
-			double newDamage = event.getDamage() * GameSettings.FIRST_LAST_DAMAGE_MULT.value();
-			if (newDamage >= target.getHealth()) {
+			}
+			if (Sequence.getRank(damager) <= Sequence.getRank(target)) {
+				// Inverse Attack
+				event.setCancelled(true);
+				double newDamage = event.getDamage() * 2;
+				if (newDamage >= damager.getHealth()) {
+					pvpTime(event, damager, target);
+				} else {
+					damager.damage(newDamage, target);
+				}
+				return;
+			}
+
+			// Normal Attack
+			if (event.getDamage() >= target.getHealth())
 				pvpTime(event, target, damager);
-			} else {
-				event.setDamage(newDamage);
-			}
-			return;
 		}
-		if (Sequence.getRank(damager) <= Sequence.getRank(target)) {
-			// Inverse Attack
-			event.setCancelled(true);
-			double newDamage = event.getDamage() * 2;
-			if (newDamage >= damager.getHealth()) {
-				pvpTime(event, damager, target);
-			} else {
-				damager.damage(newDamage, target);
-			}
-			return;
-		}
-
-		// Normal Attack
-		if (event.getDamage() >= target.getHealth())
-			pvpTime(event, target, damager);
-
 	}
 
 	public void pvpTime(EntityDamageByEntityEvent event, Player killed, Player killer) {
