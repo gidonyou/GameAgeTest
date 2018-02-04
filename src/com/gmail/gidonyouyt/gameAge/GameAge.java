@@ -1,5 +1,8 @@
 package com.gmail.gidonyouyt.gameAge;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
@@ -22,6 +25,7 @@ public class GameAge extends JavaPlugin {
 
 	public static String pluginName = "버그덩어리";
 	public static String pluginVersion = "버그버전";
+	public static boolean upToDate = true;
 	public ConfigYml yml = new ConfigYml(this);
 
 	public GameAge() {
@@ -68,13 +72,44 @@ public class GameAge extends JavaPlugin {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
+		// Update Checker
+		checkVersion();
 	}
 
 	public void onDisable() {
 		Bukkit.getServer().getScheduler().cancelAllTasks();
 		Sequence.stop();
 
+	}
+	
+	public void checkVersion() {
+		getServer().getScheduler().runTaskAsynchronously(this, new Runnable() {
+			@Override
+			public void run() {
+				try {
+					URL rssURL = new URL("https://github.com/gidonyou/MCPlugin_GameAge/releases.atom");
+					BufferedReader in = new BufferedReader(new InputStreamReader(rssURL.openStream()));
+					String sourceCode = "";
+					String line;
+					while ((line = in.readLine()) != null) {
+						if(line.contains("<id>")) {
+							int firstPos = line.indexOf("<id>");
+							String temp = line.substring(firstPos);
+							sourceCode += temp + "\n";
+						}
+					}
+					in.close();
+					
+					//Test Output
+					System.out.println(sourceCode);
+					
+				} catch (Exception e) {
+					System.out.println("Can not Check update");
+				}
+				
+			}
+		});
 	}
 
 }
