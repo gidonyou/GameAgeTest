@@ -342,7 +342,7 @@ public class PlayerInteract implements Listener {
 					text = new TextComponent(ep.getName() + "\n");
 					text.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/ga steal " + ep.getName()));
 					text.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
-							new ComponentBuilder(ChatColor.YELLOW + ep.getName() + ChatColor.GOLD + "에서 시간을 뺏습니다. (우클릭)")
+							new ComponentBuilder(ChatColor.YELLOW + ep.getName() + ChatColor.GOLD + "에서 시간을 뺏습니다. (좌클릭)")
 									.create()));
 				}
 				finalText.addExtra(text);
